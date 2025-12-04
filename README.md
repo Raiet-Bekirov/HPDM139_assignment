@@ -6,7 +6,7 @@ A zip file that contains our python package and some documents such as a README,
 
 ### When our group must deliver it:
 
-9th Jan 2026
+7th Jan 2026
 
 ### What is our python package?
 
@@ -70,13 +70,6 @@ The repo should also contain:
 
 
 
-## Structure
-- fairness_toolkit/: package code
-- team_portfolio/: meeting minutes etc
-- tests/: automated tests
-- tutorial.ipynb: demo / tutorial notebook
-- READNE.md
-- environment.yml
 
 ## Development
 Branch strategy

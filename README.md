@@ -135,3 +135,17 @@ y_test[i], the true outcome for individual i
 `group_map`, a mapping from each group label to the underlying protected attribute values.
 
 `counts`, a summary of how many individuals in the test set belong to each intersectional group.
+
+
+## Creating group_dict
+
+Alternatively, in case the fairness function expects `group_dict: dict[str, list]` where each key is a protected attribute and each value is a list of that attribute’s value for every sample, e.g.
+
+```
+{
+  "Sex":      [1, 0, 1, ...],
+  "age_group": ["older", "young", "older", ...]
+}
+```
+
+Then `group_dict` is created from a subset of the original DataFrame that contains only the rows used for testing and only the protected attributes we care about such as sex, age group.

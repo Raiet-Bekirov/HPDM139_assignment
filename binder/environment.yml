@@ -1,7 +1,9 @@
-name: hds_fairness
+name: fairness_docs
 channels:
   - conda-forge
 dependencies:
+  - jupyterlab=4.4.6
   - numpy=2.3.2
+  - pandas=2.3.2
   - python=3.12
-  - pytest=8.4.1
+  - scikit-learn=1.7.1

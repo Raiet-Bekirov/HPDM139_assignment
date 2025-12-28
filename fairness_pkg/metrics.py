@@ -163,7 +163,28 @@ def max_intersect_acc_ratio(subject_labels_dict, predictions, true_statuses,
 
 
 def group_fnr(group_label, subject_labels, predictions, true_statuses):
-    pass
+    n_samples = len(predictions)
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_group = [False] * n_samples
+    for observation in range(n_samples):
+        if subject_labels[observation] == group_label:
+            in_group[observation] = True
+    results_for_pos_cases = [acc for acc, include, truth
+                             in zip(accurate_or_not, in_group, true_statuses)
+                             if include is True and bool(truth) is True]
+
+    if len(group_neg_results) > 0:
+        false_neg_rate = (len(results_for_pos_cases)
+                          -sum(results_for_pos_cases)) \
+                         / len(results_for_pos_cases)
+    else:
+        false_neg_rate = np.nan
+
+    return false_neg_rate
 
 
 def group_fnr_diff():
@@ -191,7 +212,28 @@ def max_intersect_fnr_ratio():
 
 
 def group_fpr(group_label, subject_labels, predictions, true_statuses):
-    pass
+    n_samples = len(predictions)
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_group = [False] * n_samples
+    for observation in range(n_samples):
+        if subject_labels[observation] == group_label:
+            in_group[observation] = True
+    results_for_neg_cases = [acc for acc, include, truth
+                             in zip(accurate_or_not, in_group, true_statuses)
+                             if include is True and bool(truth) is False]
+
+    if len(group_neg_results) > 0:
+        false_pos_rate = (len(results_for_neg_cases)
+                          -sum(results_for_neg_cases)) \
+                         / len(results_for_neg_cases)
+    else:
+        false_pos_rate = np.nan
+
+    return false_pos_rate
 
 
 def group_fpr_diff():

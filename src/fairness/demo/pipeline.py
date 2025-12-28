@@ -23,9 +23,9 @@ from typing import Callable, Optional, Sequence, Any, Dict, Hashable, Tuple
 
 import pandas as pd
 
-from fairness.data import load_csv, make_dataset_bundle
-from fairness.preprocess import apply_transforms, preprocess_tabular, make_train_test_split, SplitData
-from fairness.groups import create_intersectional_groups
+from src.fairness.data import load_csv, make_dataset_bundle
+from src.fairness.preprocess import apply_transforms, preprocess_tabular, make_train_test_split, SplitData
+from src.fairness.groups import create_intersectional_groups
 
 
 @dataclass(frozen=True)

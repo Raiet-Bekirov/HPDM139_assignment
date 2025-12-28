@@ -13,14 +13,14 @@ Bias can arise when model predictions differ across protected attributes such as
 This package provides tools which allow researchers to evaluate fairness across intersections of protected attributes, rather than considering each attribute independently.
 
 For example, instead of checking:
-•	men vs women
-•	younger vs older patients
+- men vs women
+- younger vs older patients
 
 We check:
-•	young women
-•	older women
-•	young men
-•	older men
+- young women
+- older women
+- young men
+- older men
 
 This approach is motivated by the observation that unfairness can be hidden when outcomes are averaged over broad groups. Disparities often emerge at the intersections of attributes, where individuals may experience compounded or 'double' disadvantage. For instance, older women may be treated less favourably than either women or older patients considered as marginal groups alone.
 

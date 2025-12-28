@@ -177,9 +177,9 @@ def group_fnr(group_label, subject_labels, predictions, true_statuses):
                              in zip(accurate_or_not, in_group, true_statuses)
                              if include is True and bool(truth) is True]
 
-    if len(group_neg_results) > 0:
+    if len(results_for_pos_cases) > 0:
         false_neg_rate = (len(results_for_pos_cases)
-                          -sum(results_for_pos_cases)) \
+                          - sum(results_for_pos_cases)) \
                          / len(results_for_pos_cases)
     else:
         false_neg_rate = np.nan
@@ -187,28 +187,140 @@ def group_fnr(group_label, subject_labels, predictions, true_statuses):
     return false_neg_rate
 
 
-def group_fnr_diff():
-    pass
+def group_fnr_diff(group_a_label, group_b_label, subject_labels,
+                   predictions, true_statuses):
+    group_a_fnr = group_fnr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fnr = group_fnr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fnr) or np.isnan(group_a_fnr):
+        diff = np.nan
+    else:
+        diff = abs(group_a_fnr - group_b_fnr)
+
+    return diff
 
 
-def group_fnr_ratio():
-    pass
+def group_fnr_ratio(group_a_label, group_b_label, subject_labels,
+                    predictions, true_statuses, natural_log=True):
+    group_a_fnr = group_fnr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fnr = group_fnr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fnr) or np.isnan(group_a_fnr):
+        ratio = np.nan
+    else:
+        ratio_a_b = group_a_fnr / group_b_fnr
+        ratio_b_a = group_b_fnr / group_a_fnr
+        ratio = max(ratio_a_b, ratio_b_a)
+
+    if natural_log is True:
+        return np.log(ratio)
+    else:
+        return ratio
 
 
-def intersect_fnr():
-    pass
+def intersect_fnr(group_labels_dict, subject_labels_dict,
+                  predictions, true_statuses):
+    n_samples = len(predictions)
+    categories = sorted(group_labels_dict.keys())
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_groups = [False] * n_samples
+    for observation in range(n_samples):
+        category_match = []
+        for category in categories:
+            group = group_labels_dict[category]
+            if subject_labels_dict[category][observation] == group:
+                category_match.append(1)
+            else:
+                category_match.append(0)
+        in_intersectional_group = bool(math.prod(category_match))
+        if in_intersectional_group is True:
+            in_groups[observation] = True
+
+    inter_pos_case_results = [acc for acc, include, truth
+                              in zip(accurate_or_not, in_groups, true_statuses)
+                              if include is True and bool(truth) is True]
+
+    if len(inter_pos_case_results) > 0:
+        false_neg_rate = (len(inter_pos_case_results)
+                          - sum(inter_pos_case_results)) \
+                         / len(inter_pos_case_results)
+    else:
+        false_neg_rate = np.nan
+
+    return false_neg_rate
 
 
-def all_intersect_fnrs():
-    pass
+def all_intersect_fnrs(subject_labels_dict, predictions, true_statuses):
+    category_names = sorted(subject_labels_dict.keys())
+    unique_groups = {}
+    for category in category_names:
+        unique_groups[category] = sorted(set(subject_labels_dict[category]))
+
+    all_combinations = list(product(*[unique_groups[category]
+                            for category in category_names]))
+
+    fnrs = {}
+    for combination in all_combinations:
+        combination_dict = {}
+        for i, category_name in enumerate(category_names):
+            combination_dict[category_name] = combination[i]
+        intersect_fn_rate = intersect_fnr(
+                                group_labels_dict=combination_dict,
+                                subject_labels_dict=subject_labels_dict,
+                                predictions=predictions,
+                                true_statuses=true_statuses)
+        intersect_group_name = " + ".join(str(group) for group in combination)
+        fnrs[intersect_group_name] = intersect_fn_rate
+
+    return fnrs
 
 
-def max_intersect_fnr_diff():
-    pass
+def max_intersect_fnr_diff(subject_labels_dict, predictions, true_statuses):
+    fnrs = all_intersect_fnrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fnr_values = np.array(list(fnrs.values()))
+
+    if any(np.isnan(fnr_values)):
+        max_diff = np.nan
+    else:
+        max_diff = max(fnr_values) - min(fnr_values)
+
+    return max_diff
 
 
-def max_intersect_fnr_ratio():
-    pass
+def max_intersect_fnr_ratio(subject_labels_dict, predictions, true_statuses,
+                            natural_log=True):
+    fnrs = all_intersect_fnrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fnr_values = np.array(list(fnrs.values()))
+
+    if any(np.isnan(fnr_values)):
+        max_ratio = np.nan
+    else:
+        max_ratio = max(fnr_values) / min(fnr_values)
+
+    if natural_log is True:
+        return np.log(max_ratio)
+    else:
+        return max_ratio
 
 
 def group_fpr(group_label, subject_labels, predictions, true_statuses):
@@ -226,9 +338,9 @@ def group_fpr(group_label, subject_labels, predictions, true_statuses):
                              in zip(accurate_or_not, in_group, true_statuses)
                              if include is True and bool(truth) is False]
 
-    if len(group_neg_results) > 0:
+    if len(results_for_neg_cases) > 0:
         false_pos_rate = (len(results_for_neg_cases)
-                          -sum(results_for_neg_cases)) \
+                          - sum(results_for_neg_cases)) \
                          / len(results_for_neg_cases)
     else:
         false_pos_rate = np.nan
@@ -236,28 +348,140 @@ def group_fpr(group_label, subject_labels, predictions, true_statuses):
     return false_pos_rate
 
 
-def group_fpr_diff():
-    pass
+def group_fpr_diff(group_a_label, group_b_label, subject_labels,
+                   predictions, true_statuses):
+    group_a_fpr = group_fpr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fpr = group_fpr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fpr) or np.isnan(group_a_fpr):
+        diff = np.nan
+    else:
+        diff = abs(group_a_fpr - group_b_fpr)
+
+    return diff
 
 
-def group_fpr_ratio():
-    pass
+def group_fpr_ratio(group_a_label, group_b_label, subject_labels,
+                    predictions, true_statuses, natural_log=True):
+    group_a_fpr = group_fpr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fpr = group_fpr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fpr) or np.isnan(group_a_fpr):
+        ratio = np.nan
+    else:
+        ratio_a_b = group_a_fpr / group_b_fpr
+        ratio_b_a = group_b_fpr / group_a_fpr
+        ratio = max(ratio_a_b, ratio_b_a)
+
+    if natural_log is True:
+        return np.log(ratio)
+    else:
+        return ratio
 
 
-def intersect_fpr():
-    pass
+def intersect_fpr(group_labels_dict, subject_labels_dict,
+                  predictions, true_statuses):
+    n_samples = len(predictions)
+    categories = sorted(group_labels_dict.keys())
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_groups = [False] * n_samples
+    for observation in range(n_samples):
+        category_match = []
+        for category in categories:
+            group = group_labels_dict[category]
+            if subject_labels_dict[category][observation] == group:
+                category_match.append(1)
+            else:
+                category_match.append(0)
+        in_intersectional_group = bool(math.prod(category_match))
+        if in_intersectional_group is True:
+            in_groups[observation] = True
+
+    inter_neg_case_results = [acc for acc, include, truth
+                              in zip(accurate_or_not, in_groups, true_statuses)
+                              if include is True and bool(truth) is False]
+
+    if len(inter_neg_case_results) > 0:
+        false_pos_rate = (len(inter_neg_case_results)
+                          - sum(inter_neg_case_results)) \
+                         / len(inter_neg_case_results)
+    else:
+        false_pos_rate = np.nan
+
+    return false_pos_rate
 
 
-def all_intersect_fprs():
-    pass
+def all_intersect_fprs(subject_labels_dict, predictions, true_statuses):
+    category_names = sorted(subject_labels_dict.keys())
+    unique_groups = {}
+    for category in category_names:
+        unique_groups[category] = sorted(set(subject_labels_dict[category]))
+
+    all_combinations = list(product(*[unique_groups[category]
+                            for category in category_names]))
+
+    fprs = {}
+    for combination in all_combinations:
+        combination_dict = {}
+        for i, category_name in enumerate(category_names):
+            combination_dict[category_name] = combination[i]
+        intersect_fp_rate = intersect_fpr(
+                                group_labels_dict=combination_dict,
+                                subject_labels_dict=subject_labels_dict,
+                                predictions=predictions,
+                                true_statuses=true_statuses)
+        intersect_group_name = " + ".join(str(group) for group in combination)
+        fprs[intersect_group_name] = intersect_fp_rate
+
+    return fprs
 
 
-def max_intersect_fpr_diff():
-    pass
+def max_intersect_fpr_diff(subject_labels_dict, predictions, true_statuses):
+    fprs = all_intersect_fprs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fpr_values = np.array(list(fprs.values()))
+
+    if any(np.isnan(fpr_values)):
+        max_diff = np.nan
+    else:
+        max_diff = max(fpr_values) - min(fpr_values)
+
+    return max_diff
 
 
-def max_intersect_fpr_ratio():
-    pass
+def max_intersect_fpr_ratio(subject_labels_dict, predictions, true_statuses,
+                            natural_log=True):
+    fprs = all_intersect_fnrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fpr_values = np.array(list(fprs.values()))
+
+    if any(np.isnan(fpr_values)):
+        max_ratio = np.nan
+    else:
+        max_ratio = max(fpr_values) / min(fpr_values)
+
+    if natural_log is True:
+        return np.log(max_ratio)
+    else:
+        return max_ratio
 
 
 def group_for(group_label, subject_labels, predictions, true_statuses):
@@ -284,28 +508,139 @@ def group_for(group_label, subject_labels, predictions, true_statuses):
     return false_omi_rate
 
 
-def group_for_diff():
-    pass
+def group_for_diff(group_a_label, group_b_label, subject_labels,
+                   predictions, true_statuses):
+    group_a_for = group_for(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_for = group_for(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_for) or np.isnan(group_b_for):
+        diff = np.nan
+    else:
+        diff = abs(group_a_for - group_b_for)
+
+    return diff
 
 
-def group_for_ratio():
-    pass
+def group_for_ratio(group_a_label, group_b_label, subject_labels,
+                    predictions, true_statuses, natural_log=True):
+    group_a_for = group_for(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_for = group_for(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_for) or np.isnan(group_b_for):
+        ratio = np.nan
+    else:
+        ratio_a_b = group_a_for / group_b_for
+        ratio_b_a = group_b_for / group_a_for
+        ratio = max(ratio_a_b, ratio_b_a)
+
+    if natural_log is True:
+        return np.log(ratio)
+    else:
+        return ratio
 
 
-def intersect_for():
-    pass
+def intersect_for(group_labels_dict, subject_labels_dict,
+                  predictions, true_statuses):
+    n_samples = len(predictions)
+    categories = sorted(group_labels_dict.keys())
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_groups = [False] * n_samples
+    for observation in range(n_samples):
+        category_match = []
+        for category in categories:
+            group = group_labels_dict[category]
+            if subject_labels_dict[category][observation] == group:
+                category_match.append(1)
+            else:
+                category_match.append(0)
+        in_intersectional_group = bool(math.prod(category_match))
+        if in_intersectional_group is True:
+            in_groups[observation] = True
+
+    inter_neg_results = [acc for acc, include, pos
+                         in zip(accurate_or_not, in_groups, predictions)
+                         if include is True and bool(pos) is False]
+
+    if len(inter_neg_results) > 0:
+        false_omi_rate = (len(inter_neg_results)-sum(inter_neg_results)) \
+                          / len(inter_neg_results)
+    else:
+        false_omi_rate = np.nan
+
+    return false_omi_rate
 
 
-def all_intersect_fors():
-    pass
+def all_intersect_fors(subject_labels_dict, predictions, true_statuses):
+    category_names = sorted(subject_labels_dict.keys())
+    unique_groups = {}
+    for category in category_names:
+        unique_groups[category] = sorted(set(subject_labels_dict[category]))
+
+    all_combinations = list(product(*[unique_groups[category]
+                            for category in category_names]))
+
+    fors = {}
+    for combination in all_combinations:
+        combination_dict = {}
+        for i, category_name in enumerate(category_names):
+            combination_dict[category_name] = combination[i]
+        intersect_fo_rate = intersect_for(
+                                group_labels_dict=combination_dict,
+                                subject_labels_dict=subject_labels_dict,
+                                predictions=predictions,
+                                true_statuses=true_statuses)
+        intersect_group_name = " + ".join(str(group) for group in combination)
+        fors[intersect_group_name] = intersect_fo_rate
+
+    return fors
 
 
-def max_intersect_for_diff():
-    pass
+def max_intersect_for_diff(subject_labels_dict, predictions, true_statuses):
+    fors = all_intersect_fors(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    for_values = np.array(list(fors.values()))
+
+    if any(np.isnan(for_values)):
+        max_diff = np.nan
+    else:
+        max_diff = max(for_values) - min(for_values)
+
+    return max_diff
 
 
-def max_intersect_for_ratio():
-    pass
+def max_intersect_for_ratio(subject_labels_dict, predictions, true_statuses,
+                            natural_log=True):
+    fors = all_intersect_fnrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    for_values = np.array(list(fors.values()))
+
+    if any(np.isnan(for_values)):
+        max_ratio = np.nan
+    else:
+        max_ratio = max(for_values) / min(for_values)
+
+    if natural_log is True:
+        return np.log(max_ratio)
+    else:
+        return max_ratio
 
 
 def group_fdr(group_label, subject_labels, predictions, true_statuses):
@@ -332,25 +667,136 @@ def group_fdr(group_label, subject_labels, predictions, true_statuses):
     return false_dis_rate
 
 
-def group_fdr_diff():
-    pass
+def group_fdr_diff(group_a_label, group_b_label, subject_labels,
+                   predictions, true_statuses):
+    group_a_fdr = group_fdr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fdr = group_fdr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fdr) or np.isnan(group_b_fdr):
+        diff = np.nan
+    else:
+        diff = abs(group_a_fdr - group_b_fdr)
+
+    return diff
 
 
-def group_fdr_ratio():
-    pass
+def group_fdr_ratio(group_a_label, group_b_label, subject_labels,
+                    predictions, true_statuses, natural_log=True):
+    group_a_fdr = group_fdr(group_label=group_a_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+    group_b_fdr = group_fdr(group_label=group_b_label,
+                            subject_labels=subject_labels,
+                            predictions=predictions,
+                            true_statuses=true_statuses)
+
+    if np.isnan(group_a_fdr) or np.isnan(group_b_fdr):
+        ratio = np.nan
+    else:
+        ratio_a_b = group_a_fdr / group_b_fdr
+        ratio_b_a = group_b_fdr / group_a_fdr
+        ratio = max(ratio_a_b, ratio_b_a)
+
+    if natural_log is True:
+        return np.log(ratio)
+    else:
+        return ratio
 
 
-def intersect_fdr():
-    pass
+def intersect_fdr(group_labels_dict, subject_labels_dict,
+                  predictions, true_statuses):
+    n_samples = len(predictions)
+    categories = sorted(group_labels_dict.keys())
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_groups = [False] * n_samples
+    for observation in range(n_samples):
+        category_match = []
+        for category in categories:
+            group = group_labels_dict[category]
+            if subject_labels_dict[category][observation] == group:
+                category_match.append(1)
+            else:
+                category_match.append(0)
+        in_intersectional_group = bool(math.prod(category_match))
+        if in_intersectional_group is True:
+            in_groups[observation] = True
+
+    inter_pos_results = [acc for acc, include, pos
+                         in zip(accurate_or_not, in_groups, predictions)
+                         if include is True and bool(pos) is True]
+
+    if len(inter_pos_results) > 0:
+        false_dis_rate = (len(inter_pos_results)-sum(inter_pos_results)) \
+                          / len(inter_pos_results)
+    else:
+        false_dis_rate = np.nan
+
+    return false_dis_rate
 
 
-def all_intersect_fdrs():
-    pass
+def all_intersect_fdrs(subject_labels_dict, predictions, true_statuses):
+    category_names = sorted(subject_labels_dict.keys())
+    unique_groups = {}
+    for category in category_names:
+        unique_groups[category] = sorted(set(subject_labels_dict[category]))
+
+    all_combinations = list(product(*[unique_groups[category]
+                            for category in category_names]))
+
+    fdrs = {}
+    for combination in all_combinations:
+        combination_dict = {}
+        for i, category_name in enumerate(category_names):
+            combination_dict[category_name] = combination[i]
+        intersect_fd_rate = intersect_fdr(
+                                group_labels_dict=combination_dict,
+                                subject_labels_dict=subject_labels_dict,
+                                predictions=predictions,
+                                true_statuses=true_statuses)
+        intersect_group_name = " + ".join(str(group) for group in combination)
+        fdrs[intersect_group_name] = intersect_fd_rate
+
+    return fdrs
 
 
-def max_intersect_fdr_diff():
-    pass
+def max_intersect_fdr_diff(subject_labels_dict, predictions, true_statuses):
+    fdrs = all_intersect_fdrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fdr_values = np.array(list(fdrs.values()))
+
+    if any(np.isnan(fdr_values)):
+        max_diff = np.nan
+    else:
+        max_diff = max(fdr_values) - min(fdr_values)
+
+    return max_diff
 
 
-def max_intersect_fdr_ratio():
-    pass
+def max_intersect_fdr_ratio(subject_labels_dict, predictions, true_statuses,
+                            natural_log=True):
+    fdrs = all_intersect_fnrs(subject_labels_dict=subject_labels_dict,
+                              predictions=predictions,
+                              true_statuses=true_statuses)
+    fdr_values = np.array(list(fdrs.values()))
+
+    if any(np.isnan(fdr_values)):
+        max_ratio = np.nan
+    else:
+        max_ratio = max(fdr_values) / min(fdr_values)
+
+    if natural_log is True:
+        return np.log(max_ratio)
+    else:
+        return max_ratio

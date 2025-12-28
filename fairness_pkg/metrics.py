@@ -163,27 +163,7 @@ def max_intersect_acc_ratio(subject_labels_dict, predictions, true_statuses,
 
 
 def group_fnr(group_label, subject_labels, predictions, true_statuses):
-    n_samples = len(predictions)
-
-    accurate_or_not = [pred == truth
-                       for pred, truth
-                       in zip(predictions, true_statuses)]
-
-    in_group = [False] * n_samples
-    for observation in range(n_samples):
-        if subject_labels[observation] == group_label:
-            in_group[observation] = True
-    group_neg_results = [acc for acc, include, pos
-                         in zip(accurate_or_not, in_group, predictions)
-                         if include is True and bool(pos) is False]
-
-    if len(group_neg_results) > 0:
-        false_neg_rate = (len(group_neg_results)-sum(group_neg_results)) \
-                         / len(group_neg_results)
-    else:
-        false_neg_rate = np.nan
-
-    return false_neg_rate
+    pass
 
 
 def group_fnr_diff():
@@ -211,27 +191,7 @@ def max_intersect_fnr_ratio():
 
 
 def group_fpr(group_label, subject_labels, predictions, true_statuses):
-    n_samples = len(predictions)
-
-    accurate_or_not = [pred == truth
-                       for pred, truth
-                       in zip(predictions, true_statuses)]
-
-    in_group = [False] * n_samples
-    for observation in range(n_samples):
-        if subject_labels[observation] == group_label:
-            in_group[observation] = True
-    group_pos_results = [acc for acc, include, pos
-                         in zip(accurate_or_not, in_group, predictions)
-                         if include is True and bool(pos) is True]
-
-    if len(group_pos_results) > 0:
-        false_pos_rate = (len(group_pos_results)-sum(group_pos_results)) \
-                         / len(group_pos_results)
-    else:
-        false_pos_rate = np.nan
-
-    return false_pos_rate
+    pass
 
 
 def group_fpr_diff():
@@ -259,7 +219,27 @@ def max_intersect_fpr_ratio():
 
 
 def group_for(group_label, subject_labels, predictions, true_statuses):
-    pass
+    n_samples = len(predictions)
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_group = [False] * n_samples
+    for observation in range(n_samples):
+        if subject_labels[observation] == group_label:
+            in_group[observation] = True
+    group_neg_results = [acc for acc, include, pos
+                         in zip(accurate_or_not, in_group, predictions)
+                         if include is True and bool(pos) is False]
+
+    if len(group_neg_results) > 0:
+        false_omi_rate = (len(group_neg_results)-sum(group_neg_results)) \
+                         / len(group_neg_results)
+    else:
+        false_omi_rate = np.nan
+
+    return false_omi_rate
 
 
 def group_for_diff():
@@ -287,7 +267,27 @@ def max_intersect_for_ratio():
 
 
 def group_fdr(group_label, subject_labels, predictions, true_statuses):
-    pass
+    n_samples = len(predictions)
+
+    accurate_or_not = [pred == truth
+                       for pred, truth
+                       in zip(predictions, true_statuses)]
+
+    in_group = [False] * n_samples
+    for observation in range(n_samples):
+        if subject_labels[observation] == group_label:
+            in_group[observation] = True
+    group_pos_results = [acc for acc, include, pos
+                         in zip(accurate_or_not, in_group, predictions)
+                         if include is True and bool(pos) is True]
+
+    if len(group_pos_results) > 0:
+        false_dis_rate = (len(group_pos_results)-sum(group_pos_results)) \
+                         / len(group_pos_results)
+    else:
+        false_dis_rate = np.nan
+
+    return false_dis_rate
 
 
 def group_fdr_diff():

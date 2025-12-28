@@ -2,7 +2,27 @@ import numpy as np
 from itertools import product
 
 
-def group_accuracy(group_label, subject_labels, predictions, true_statuses):
+def group_accuracy(group_label, eval_df):
+    """
+    Compute accuracy for a specific protected group.
+
+    Parameters
+    ----------
+    group_label : str
+        Intersectional group label (e.g. 'Sex=0|age_group=older')
+    eval_df : pd.DataFrame
+        DataFrame with columns ['subject_label', 'y_pred', 'y_true']
+
+    Returns
+    -------
+    float
+        Group-specific accuracy
+    """
+
+    subject_labels = eval_df["subject_label"].tolist()
+    predictions = eval_df["y_pred"].tolist()
+    true_statuses = eval_df["y_true"].tolist()
+    
     n_samples = len(predictions)
     accurate_or_not = [pred == truth
                        for pred, truth

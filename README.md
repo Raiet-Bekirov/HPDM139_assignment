@@ -80,10 +80,21 @@ eval_df = make_eval_df(
     y_true=split.y_test.to_numpy(),
 )
 
-# 6) Example group metric: accuracy for older females
-older_female = "Sex=0|age_group=older"
-acc = group_accuracy(older_female, eval_df)
-print("Accuracy (older female):", round(acc, 3))
+# 6) example use (accuracy ratio between two intersectional groups)
+from fairness.adapters import unpack_eval_df
+from fairness.metrics import group_acc_ratio 
+
+subject_labels, predictions, true_statuses = unpack_eval_df(eval_df)
+
+acc = group_acc_ratio(
+    "Sex=0|age_group=older",
+    "Sex=1|age_group=older",
+    subject_labels,
+    predictions,
+    true_statuses,
+    natural_log=True
+)
+print("Accuracy ration:", acc)
 ```
 
 A complete end-to-end example using the UCI Heart Disease dataset is provided at [`examples/uci_heart_demo.ipynb`](examples/uci_heart_demo.ipynb)

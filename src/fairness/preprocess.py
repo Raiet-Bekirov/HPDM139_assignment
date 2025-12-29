@@ -29,9 +29,8 @@ Typical usage
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Iterable, Mapping, Optional, Sequence, Tuple, Union
+from typing import Callable, Mapping, Sequence
 
-import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -60,7 +59,6 @@ class SplitData:
 
 def add_age_group(
     df: pd.DataFrame,
-    *,
     age_col: str = "Age",
     new_col: str = "age_group",
     bins: Sequence[float] = (0, 55, 120),

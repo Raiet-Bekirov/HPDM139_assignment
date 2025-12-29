@@ -41,29 +41,41 @@ cd HPDM139_assignment
 pip install -e .
 ```
 
+Alternatively, install from TestPyPI:
+
+```bash
+pip install -i https://test.pypi.org/simple/intersectional-fairness-toolkit==0.1.0
+```
+
 
 ## Example usage
+
+The example below demonstrates a typical workflow:
+loading a clinical dataset, training a simple classifier, and evaluating
+intersectional fairness metrics. The toolkit is model-agnostic and can be used
+with any scikit-learn–compatible estimator.
 
 ```python
 from fairness.data import load_heart_csv
 from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
 from fairness.groups import make_eval_df
-from fairness.metrics.metrics import group_accuracy 
+from fairness.adapters import unpack_eval_df
+from fairness.metrics import group_acc_ratio 
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 
-# 1) Load + fairness-oriented preprocessing
+# 1) Load dataset and add protected attributes
 df = load_heart_csv("data/heart.csv")
 df = add_age_group(df)
 
-# 2) Preprocessing for ML
+# 2) Prepare features for modelling
 df_model = preprocess_tabular(df)
 
 # 3) Train/test split
 split = make_train_test_split(df_model, target_col="HeartDisease", stratify=True)
 
-# 4) Train a simple model (example only; toolkit is model-agnostic)
+# 4) Train a simple model (example)
 model = Pipeline([
     ("scaler", StandardScaler()),
     ("clf", LogisticRegression(max_iter=2000))
@@ -71,7 +83,7 @@ model = Pipeline([
 model.fit(split.X_train, split.y_train)
 y_pred = model.predict(split.X_test)
 
-# 5) Build aligned evaluation DataFrame for fairness metrics
+# 5) Align predictions, labels, and protected attributes
 df_test = df.loc[split.X_test.index] 
 eval_df = make_eval_df(
     df_test=df_test,
@@ -80,9 +92,7 @@ eval_df = make_eval_df(
     y_true=split.y_test.to_numpy(),
 )
 
-# 6) example use (accuracy ratio between two intersectional groups)
-from fairness.adapters import unpack_eval_df
-from fairness.metrics import group_acc_ratio 
+# 6) Compute intersectional fairness metric
 
 subject_labels, predictions, true_statuses = unpack_eval_df(eval_df)
 
@@ -94,7 +104,7 @@ acc = group_acc_ratio(
     true_statuses,
     natural_log=True
 )
-print("Accuracy ration:", acc)
+print("Accuracy ratio:", acc)
 ```
 
 A complete end-to-end example using the UCI Heart Disease dataset is provided at [`examples/uci_heart_demo.ipynb`](examples/uci_heart_demo.ipynb)
@@ -103,9 +113,9 @@ A complete end-to-end example using the UCI Heart Disease dataset is provided at
 
 Additional documentation is available in the `docs/` directory:
 
-- [`docs/tutorial.md`](docs/tutorial.md) – step-by-step workflow explanation
-- [`docs/api_reference.md`](docs/api_reference.md) – documentation of each function
-- [`docs/design_decisions.md`](docs/design_decisions.md) – rationale behind design choices
+- [`docs/tutorial.md`](docs/tutorial.md) - step-by-step workflow explanation
+- [`docs/api_reference.md`](docs/api_reference.md) - documentation of each function
+- [`docs/design_decisions.md`](docs/design_decisions.md) - rationale behind design choices
 
 
 ## Project context
@@ -115,4 +125,4 @@ This package was developed as part of the HPDM139 module (Health Data Science) a
 
 ## License
 
-MIT License
+Apache-2.0 license

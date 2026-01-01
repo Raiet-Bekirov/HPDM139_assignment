@@ -116,12 +116,14 @@ Additional documentation is available at [https://raiet-bekirov.github.io/HPDM13
 - [Turotial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial.md) - step-by-step workflow explanation
 - [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference.md) - documentation of each function
 - [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions.md) - rationale behind design choices
-- [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/team_portfolio.md) - Agenda and minutes of team meetings
+
 
 
 ## Project context
 
 This package was developed as part of the HPDM139 module (Health Data Science) at the University of Exeter.
+
+Agendas and minutes of team meetings are in the [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/team_portfolio/contents.md) 
 
 
 ## License

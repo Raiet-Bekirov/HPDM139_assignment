@@ -111,11 +111,12 @@ A complete end-to-end example using the UCI Heart Disease dataset is provided at
 
 ## Documentation
 
-Additional documentation is available in the `docs/` directory:
+Additional documentation is available at [https://raiet-bekirov.github.io/HPDM139_assignment/](https://raiet-bekirov.github.io/HPDM139_assignment/), including:
 
-- [`docs/tutorial.md`](docs/tutorial.md) - step-by-step workflow explanation
-- [`docs/api_reference.md`](docs/api_reference.md) - documentation of each function
-- [`docs/design_decisions.md`](docs/design_decisions.md) - rationale behind design choices
+- [Turotial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial.md) - step-by-step workflow explanation
+- [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference.md) - documentation of each function
+- [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions.md) - rationale behind design choices
+- [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/team_portfolio.md) - Agenda and minutes of team meetings
 
 
 ## Project context

@@ -123,7 +123,7 @@ Additional documentation is available [here](https://raiet-bekirov.github.io/HPD
 
 This package was developed as part of the HPDM139 module (Health Data Science) at the University of Exeter.
 
-Agendas and minutes of team meetings are in the [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/team_portfolio/contents.md) 
+Agendas and minutes of team meetings are in the [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/contents/) 
 
 
 ## License

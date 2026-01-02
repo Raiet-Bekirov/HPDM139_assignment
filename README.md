@@ -107,7 +107,7 @@ acc = group_acc_ratio(
 print("Accuracy ratio:", acc)
 ```
 
-A complete end-to-end example using the UCI Heart Disease dataset is provided at [`examples/uci_heart_demo.ipynb`](examples/uci_heart_demo.ipynb)
+A complete end-to-end example using the UCI Heart Disease dataset is provided at [`examples/uci_heart_demo.ipynb`](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/uci_heart_demo.ipynb)
 
 ## Documentation
 

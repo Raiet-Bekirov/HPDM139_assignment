@@ -12,7 +12,7 @@ into a range of health data science workflows.
 
 ## What is intersectional fairness?
 
-Fairness issues may not appear when analysing protected attributes in isolation (e.g. sex or age). Disparities often emerge at the intersections of attributes (([Foulds, 2019](https://arxiv.org/abs/1807.08362))).
+Fairness issues may not appear when analysing protected attributes in isolation (e.g. sex or age). Disparities often emerge at the intersections of attributes ([Foulds, 2019](https://arxiv.org/abs/1807.08362)).
 
 For example, a model may perform similarly for: men vs women, or for: younger vs older patients;  while still performing substantially worse for: older women vs younger men.
 

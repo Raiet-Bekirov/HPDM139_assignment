@@ -35,23 +35,19 @@ In this package, intersectional groups are evaluated using differential fairness
 
 ## Installation
 
-Clone the repository and install the package in editable mode:
+Install from TestPyPI (recommended):
+
+```bash
+pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple intersectional-fairness-toolkit==0.1.3
+```
+
+Alternatively, clone the repository and install the package in editable mode:
 
 ```bash
 git clone https://github.com/Raiet-Bekirov/HPDM139_assignment.git
 cd HPDM139_assignment
 pip install -e .
 ```
-
-Alternatively, install from TestPyPI:
-
-```bash
-pip install \
-  -i https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple \
-  intersectional-fairness-toolkit==0.1.3
-```
-
 
 ## Example usage
 

@@ -1,14 +1,13 @@
 # Tutorial
 
-This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, spreadsheets or CSV files).
+This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, CSV files).
 
 It lets you:
 
 - combine protected characteristics such as sex and age to form intersectional groups (for example, female and over 55),
-- align model predictions with the correct individuals and their characteristics,
-- calculate fairness metrics that show how model performance differs between groups.
+- calculate fairness metrics that show how model performance differs between those groups.
 
-The toolkit is not tied to any specific dataset or model. You can use it with different health datasets and with any machine-learning model that produces predictions, making it easy to slot into existing health data science workflows.
+The toolkit is not tied to any specific dataset or model. You can use it with different health datasets and with any machine-learning model that produces predictions.
 
 ---
 
@@ -76,16 +75,6 @@ This dataset includes:
 from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
 
 df = add_age_group(df)
-```
-
-The `add_age_group` function creates an `age_group` column by binning age into broad, clinically relevant categories (for example: under 55, and 55+).
-
-This gives us two protected attributes for fairness analysis:
-- Sex (already present in the dataset)
-- Age group (derived from the Age column)
-
-
-```python
 df_model = preprocess_tabular(df)
 split = make_train_test_split(
     df_model,
@@ -93,7 +82,20 @@ split = make_train_test_split(
     stratify=True
 )
 ```
-The `preprocess_tabular` function handles data cleaning and encoding so tha the dataset is model-ready, and the `make_train_test_split` function returns a split object with `X_train, X_test, y_train, y_test` ready for machine learning. 
+
+The `add_age_group` function creates an `age_group` column by binning age into broad, clinically relevant categories (for example: under 55, and 55+).
+
+This gives us two protected attributes for fairness analysis:
+`Sex` (already present in the dataset), and `Age group` (derived from the Age column)
+
+The `preprocess_tabular` function prepares the dataset so it can be used by a machine-learning model. It cleans up the data and converts it into a format the model can understand, for example by turning categories into numbers and making sure everything is laid out consistently.
+
+The `make_train_test_split` function then divides the data into two parts:
+
+- a training set, which the model learns from, and
+- a test set, which is used to check how well the model performs on new, unseen data.
+
+It returns these as `X_train`, `X_test`, `y_train`, and `y_test`, which are ready to be passed into a machine-learning model.
 
 ## 4. Train a machine learning model
 
@@ -139,8 +141,8 @@ eval_df = make_eval_df(
 The `make_eval_df` function combines:
 
 - protected attributes
-- true outcomes
 - model predictions
+- true outcomes
 
 into a single evaluation table (`eval_df`).
 
@@ -168,10 +170,7 @@ subject_labels_dict = make_subject_labels_dict(
 )
 ```
 
-
-
-
-### Intersectional Accuracy
+### 6a. Intersectional Accuracy
 
 This asks the question: does the model performance differ accross intersectional groups?
 
@@ -186,7 +185,7 @@ accs = all_intersect_accs(subject_labels_dict, predictions, true_statuses)
 accs
 ```
 
-### Maximum accuracy difference across intersectional groups
+### 6b. Maximum accuracy difference across intersectional groups
 
 This asks, what is the performance gap between best and worst groups?
 
@@ -202,7 +201,7 @@ max_gap = max_intersect_acc_diff(
 max_gap
 ```
 
-### Maximum accuracy ratio across intersectional groups
+### 6c. Maximum accuracy ratio across intersectional groups
 
 This asks, how many times better does the best group perform compared to the worst group?
 
@@ -217,13 +216,15 @@ max_ratio_log = max_intersect_acc_ratio(
 max_ratio_log
 ```
 
-A full list of metrics functions provided by the toolkit is available at `api_reference.md`
+---
+
+These are three examples of fairness metrics which can be computed using this toolkit. A full list of metrics functions provided by the toolkit is available at `api_reference.md`
 
 ## 7. Fairness Visualisations 
 
 Visualisations can make fairness issues interpretable.
 
-### Accuracy by Intersectional Group
+### 7a. Accuracy by Intersectional Group
 
 ```python
 from fairness.visualisation import plot_group_accuracies
@@ -233,7 +234,7 @@ plot_group_accuracies(accs)
 
 This visualisation highlights groups with systematically poorer performance.
 
-### Group Size vs Performance
+### 7b. Group Size vs Performance
 
 ```python
 from fairness.visualisation import plot_group_size_vs_accuracy
@@ -243,7 +244,7 @@ plot_group_size_vs_accuracy(accs, subject_labels_dict)
 
 This visualisation shows whether poor performance may be driven by small sample sizes.
 
-### Fairness Summary Plot
+### 7c. Fairness Summary Plot
 
 ```python
 from fairness.visualisation import plot_fairness_summary
@@ -252,6 +253,10 @@ plot_fairness_summary(accs)
 ```
 
 This visualisation provides an overview suitable for reports and presentations.
+
+--- 
+
+These are three examples of fairness visualisations which can be produced using this toolkit. A full list of visualisation functions provided by the toolkit is available at `api_reference.md`
 
 ## Interpreting the Results
 

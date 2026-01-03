@@ -312,10 +312,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#intersectional-accuracy" class="md-nav__link">
+  <a href="#6a-intersectional-accuracy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Intersectional Accuracy
+        6a. Intersectional Accuracy
       
     </span>
   </a>
@@ -323,10 +323,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maximum-accuracy-difference-across-intersectional-groups" class="md-nav__link">
+  <a href="#6b-maximum-accuracy-difference-across-intersectional-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maximum accuracy difference across intersectional groups
+        6b. Maximum accuracy difference across intersectional groups
       
     </span>
   </a>
@@ -334,10 +334,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maximum-accuracy-ratio-across-intersectional-groups" class="md-nav__link">
+  <a href="#6c-maximum-accuracy-ratio-across-intersectional-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maximum accuracy ratio across intersectional groups
+        6c. Maximum accuracy ratio across intersectional groups
       
     </span>
   </a>
@@ -362,10 +362,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accuracy-by-intersectional-group" class="md-nav__link">
+  <a href="#7a-accuracy-by-intersectional-group" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accuracy by Intersectional Group
+        7a. Accuracy by Intersectional Group
       
     </span>
   </a>
@@ -373,10 +373,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-size-vs-performance" class="md-nav__link">
+  <a href="#7b-group-size-vs-performance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Group Size vs Performance
+        7b. Group Size vs Performance
       
     </span>
   </a>
@@ -384,10 +384,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fairness-summary-plot" class="md-nav__link">
+  <a href="#7c-fairness-summary-plot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fairness Summary Plot
+        7c. Fairness Summary Plot
       
     </span>
   </a>
@@ -995,10 +995,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#intersectional-accuracy" class="md-nav__link">
+  <a href="#6a-intersectional-accuracy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Intersectional Accuracy
+        6a. Intersectional Accuracy
       
     </span>
   </a>
@@ -1006,10 +1006,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maximum-accuracy-difference-across-intersectional-groups" class="md-nav__link">
+  <a href="#6b-maximum-accuracy-difference-across-intersectional-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maximum accuracy difference across intersectional groups
+        6b. Maximum accuracy difference across intersectional groups
       
     </span>
   </a>
@@ -1017,10 +1017,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maximum-accuracy-ratio-across-intersectional-groups" class="md-nav__link">
+  <a href="#6c-maximum-accuracy-ratio-across-intersectional-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maximum accuracy ratio across intersectional groups
+        6c. Maximum accuracy ratio across intersectional groups
       
     </span>
   </a>
@@ -1045,10 +1045,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accuracy-by-intersectional-group" class="md-nav__link">
+  <a href="#7a-accuracy-by-intersectional-group" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accuracy by Intersectional Group
+        7a. Accuracy by Intersectional Group
       
     </span>
   </a>
@@ -1056,10 +1056,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#group-size-vs-performance" class="md-nav__link">
+  <a href="#7b-group-size-vs-performance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Group Size vs Performance
+        7b. Group Size vs Performance
       
     </span>
   </a>
@@ -1067,10 +1067,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fairness-summary-plot" class="md-nav__link">
+  <a href="#7c-fairness-summary-plot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fairness Summary Plot
+        7c. Fairness Summary Plot
       
     </span>
   </a>
@@ -1122,14 +1122,13 @@
 
 
 <h1 id="tutorial">Tutorial</h1>
-<p>This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, spreadsheets or CSV files).</p>
+<p>This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, CSV files).</p>
 <p>It lets you:</p>
 <ul>
 <li>combine protected characteristics such as sex and age to form intersectional groups (for example, female and over 55),</li>
-<li>align model predictions with the correct individuals and their characteristics,</li>
-<li>calculate fairness metrics that show how model performance differs between groups.</li>
+<li>calculate fairness metrics that show how model performance differs between those groups.</li>
 </ul>
-<p>The toolkit is not tied to any specific dataset or model. You can use it with different health datasets and with any machine-learning model that produces predictions, making it easy to slot into existing health data science workflows.</p>
+<p>The toolkit is not tied to any specific dataset or model. You can use it with different health datasets and with any machine-learning model that produces predictions.</p>
 <hr />
 <p>In this tutorial we will perform an end-to-end intersectional fairness evaluation on a health dataset.</p>
 <p>We will:</p>
@@ -1175,19 +1174,23 @@ df = load_heart_csv(url)
 <pre><code class="language-python">from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
 
 df = add_age_group(df)
-</code></pre>
-<p>The <code>add_age_group</code> function creates an <code>age_group</code> column by binning age into broad, clinically relevant categories (for example: under 55, and 55+).</p>
-<p>This gives us two protected attributes for fairness analysis:
-- Sex (already present in the dataset)
-- Age group (derived from the Age column)</p>
-<pre><code class="language-python">df_model = preprocess_tabular(df)
+df_model = preprocess_tabular(df)
 split = make_train_test_split(
     df_model,
     target_col=&quot;HeartDisease&quot;,
     stratify=True
 )
 </code></pre>
-<p>The <code>preprocess_tabular</code> function handles data cleaning and encoding so tha the dataset is model-ready, and the <code>make_train_test_split</code> function returns a split object with <code>X_train, X_test, y_train, y_test</code> ready for machine learning. </p>
+<p>The <code>add_age_group</code> function creates an <code>age_group</code> column by binning age into broad, clinically relevant categories (for example: under 55, and 55+).</p>
+<p>This gives us two protected attributes for fairness analysis:
+<code>Sex</code> (already present in the dataset), and <code>Age group</code> (derived from the Age column)</p>
+<p>The <code>preprocess_tabular</code> function prepares the dataset so it can be used by a machine-learning model. It cleans up the data and converts it into a format the model can understand, for example by turning categories into numbers and making sure everything is laid out consistently.</p>
+<p>The <code>make_train_test_split</code> function then divides the data into two parts:</p>
+<ul>
+<li>a training set, which the model learns from, and</li>
+<li>a test set, which is used to check how well the model performs on new, unseen data.</li>
+</ul>
+<p>It returns these as <code>X_train</code>, <code>X_test</code>, <code>y_train</code>, and <code>y_test</code>, which are ready to be passed into a machine-learning model.</p>
 <h2 id="4-train-a-machine-learning-model">4. Train a machine learning model</h2>
 <p>The toolkit is designed to be model agnostic. Here we train a simple model using logistic regression.</p>
 <pre><code class="language-python">from sklearn.linear_model import LogisticRegression
@@ -1224,8 +1227,8 @@ eval_df = make_eval_df(
 <p>The <code>make_eval_df</code> function combines:</p>
 <ul>
 <li>protected attributes</li>
-<li>true outcomes</li>
 <li>model predictions</li>
+<li>true outcomes</li>
 </ul>
 <p>into a single evaluation table (<code>eval_df</code>).</p>
 <p>Each row represents one individual in the test set, with all information required for intersectional fairness analysis.</p>
@@ -1246,7 +1249,7 @@ subject_labels_dict = make_subject_labels_dict(
     protected_cols=[&quot;Sex&quot;, &quot;age_group&quot;]
 )
 </code></pre>
-<h3 id="intersectional-accuracy">Intersectional Accuracy</h3>
+<h3 id="6a-intersectional-accuracy">6a. Intersectional Accuracy</h3>
 <p>This asks the question: does the model performance differ accross intersectional groups?</p>
 <pre><code class="language-python">from fairness.metrics import (
     all_intersect_accs,
@@ -1257,7 +1260,7 @@ subject_labels_dict = make_subject_labels_dict(
 accs = all_intersect_accs(subject_labels_dict, predictions, true_statuses)
 accs
 </code></pre>
-<h3 id="maximum-accuracy-difference-across-intersectional-groups">Maximum accuracy difference across intersectional groups</h3>
+<h3 id="6b-maximum-accuracy-difference-across-intersectional-groups">6b. Maximum accuracy difference across intersectional groups</h3>
 <p>This asks, what is the performance gap between best and worst groups?</p>
 <pre><code class="language-python">
 max_gap = max_intersect_acc_diff(
@@ -1268,7 +1271,7 @@ max_gap = max_intersect_acc_diff(
 
 max_gap
 </code></pre>
-<h3 id="maximum-accuracy-ratio-across-intersectional-groups">Maximum accuracy ratio across intersectional groups</h3>
+<h3 id="6c-maximum-accuracy-ratio-across-intersectional-groups">6c. Maximum accuracy ratio across intersectional groups</h3>
 <p>This asks, how many times better does the best group perform compared to the worst group?</p>
 <pre><code class="language-python">max_ratio_log = max_intersect_acc_ratio(
     subject_labels_dict=subject_labels_dict,
@@ -1279,27 +1282,30 @@ max_gap
 
 max_ratio_log
 </code></pre>
-<p>A full list of metrics functions provided by the toolkit is available at <code>api_reference.md</code></p>
+<hr />
+<p>These are three examples of fairness metrics which can be computed using this toolkit. A full list of metrics functions provided by the toolkit is available at <code>api_reference.md</code></p>
 <h2 id="7-fairness-visualisations">7. Fairness Visualisations</h2>
 <p>Visualisations can make fairness issues interpretable.</p>
-<h3 id="accuracy-by-intersectional-group">Accuracy by Intersectional Group</h3>
+<h3 id="7a-accuracy-by-intersectional-group">7a. Accuracy by Intersectional Group</h3>
 <pre><code class="language-python">from fairness.visualisation import plot_group_accuracies
 
 plot_group_accuracies(accs)
 </code></pre>
 <p>This visualisation highlights groups with systematically poorer performance.</p>
-<h3 id="group-size-vs-performance">Group Size vs Performance</h3>
+<h3 id="7b-group-size-vs-performance">7b. Group Size vs Performance</h3>
 <pre><code class="language-python">from fairness.visualisation import plot_group_size_vs_accuracy
 
 plot_group_size_vs_accuracy(accs, subject_labels_dict)
 </code></pre>
 <p>This visualisation shows whether poor performance may be driven by small sample sizes.</p>
-<h3 id="fairness-summary-plot">Fairness Summary Plot</h3>
+<h3 id="7c-fairness-summary-plot">7c. Fairness Summary Plot</h3>
 <pre><code class="language-python">from fairness.visualisation import plot_fairness_summary
 
 plot_fairness_summary(accs)
 </code></pre>
 <p>This visualisation provides an overview suitable for reports and presentations.</p>
+<hr />
+<p>These are three examples of fairness visualisations which can be produced using this toolkit. A full list of visualisation functions provided by the toolkit is available at <code>api_reference.md</code></p>
 <h2 id="interpreting-the-results">Interpreting the Results</h2>
 <p>When looking at the fairness results, it helps to ask a few simple questions:</p>
 <ul>

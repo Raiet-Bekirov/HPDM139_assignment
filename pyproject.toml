@@ -8,7 +8,7 @@ version = "0.1.2"
 description = "Utilities for intersectional fairness analysis of tabular health datasets."
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = {text = "Apache 2.0"}
 authors = [
   {name = "HPDM139 Assignment Group"}
 ]

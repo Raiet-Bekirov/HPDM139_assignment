@@ -854,24 +854,20 @@
 
 
 <h1 id="intersectional-fairness-toolkit">Intersectional Fairness Toolkit</h1>
-<p>This documentation describes a Python toolkit for evaluating <strong>intersectional fairness</strong>
-in machine learning models applied to <strong>tabular health datasets</strong>.</p>
-<p>The toolkit supports:
-- construction of intersectional protected groups (e.g. sex × age group),
-- alignment of model predictions with protected attributes,
-- computation of group-level and intersectional fairness metrics.</p>
-<p>It is designed to be <strong>dataset-agnostic</strong> and <strong>model-agnostic</strong>, and can be integrated
-into a wide range of health data science workflows.</p>
+<p>This documentation describes a Python toolkit for evaluating intersectional fairness
+in machine learning models applied to tabular health datasets.</p>
+<p>The toolkit supports construction of intersectional protected groups (e.g. sex × age group), alignment of model predictions with protected attributes, and computation of fairness metrics.</p>
+<p>It is designed to be dataset-agnostic and model-agnostic, and can be integrated
+into a range of health data science workflows.</p>
 <hr />
 <h2 id="what-is-intersectional-fairness">What is intersectional fairness?</h2>
 <p>Fairness issues may not appear when analysing protected attributes in isolation
-(e.g. sex <em>or</em> age). Disparities often emerge at the <strong>intersections</strong> of attributes.</p>
+(e.g. sex <em>or</em> age). Disparities often emerge at the <strong>intersections</strong> of attributes ((<a href="https://arxiv.org/abs/1807.08362">Foulds, 2019</a>)).</p>
 <p>For example, a model may perform similarly for:
 - men vs women
 - younger vs older patients</p>
 <p>while still performing substantially worse for:
-- older women
-- younger men</p>
+- older women vs younger men</p>
 <p>This toolkit enables systematic evaluation of such intersectional effects.</p>
 <hr />
 <h2 id="typical-workflow">Typical workflow</h2>

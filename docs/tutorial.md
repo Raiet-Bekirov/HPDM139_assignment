@@ -1,5 +1,17 @@
 # Tutorial
 
+This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, spreadsheets or CSV files).
+
+It lets you:
+
+combine protected characteristics such as sex and age to form intersectional groups (for example, female and over 55),
+
+align model predictions with the correct individuals and their characteristics,
+
+calculate fairness metrics that show how model performance differs between groups.
+
+The toolkit is not tied to any specific dataset or model. You can use it with different health datasets and with any machine-learning model that produces predictions, making it easy to slot into existing health data science workflows.
+
 In this tutorial we will perform an end-to-end intersectional fairness evaluation on a health dataset.
 
 We will:
@@ -8,12 +20,13 @@ We will:
 2. Load a real clinical dataset (heart.csv)
 3. Prepare protected attributes and intersectional groups
 4. Train a simple machine-learning model
-5. Evaluate fairness using three key metrics
-6. Visualise fairness using three key plots
+5. Build an evaluation table for fairness analysis
+6. Evaluate fairness using three key metrics
+7. Visualise fairness using three key plots
 
 No prior fairness expertise is required.
 
-## Installation
+## 1. Installation
 
 First, create and activate a clean python environment (recommended).
 
@@ -37,7 +50,7 @@ pip install \
   -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple intersectional-fairness-toolkit==0.1.3
 ```
 
-## Load a clinical dataset
+## 2. Load a clinical dataset
 
 For this tutorial, we will use the `heart failure prediction dataset`. This dataset contains 11 features that can be used to predict possible heart disease.
 
@@ -57,7 +70,7 @@ This dataset includes:
 - a binary outcome (HeartDisease)
 - protected attributes such as Sex and Age
 
-## Add protected attributes and prepare features for modelling
+## 3. Add protected attributes and prepare features for modelling
 
 
 ```python
@@ -83,7 +96,7 @@ split = make_train_test_split(
 ```
 The `preprocess_tabular` function handles data cleaning and encoding so tha the dataset is model-ready, and the `make_train_test_split` function returns a split object with `X_train, X_test, y_train, y_test` ready for machine learning. 
 
-## Train a machine learning model
+## 4. Train a machine learning model
 
 The toolkit is designed to be model agnostic. Here we train a simple model using logistic regression.
 
@@ -109,7 +122,7 @@ The model pipeline includes:
 
 The trained model is then used to generate predictions on the test set.
 
-## Build an evaluation table for fairness analysis
+## 5. Build an evaluation table for fairness analysis
 
 ```python
 from fairness.groups import make_eval_df
@@ -135,7 +148,7 @@ into a single evaluation table (`eval_df`).
 Each row represents one individual in the test set, with all information required for intersectional fairness analysis.
 
 
-## Fairness Metrics
+## 6. Fairness Metrics
 
 Many fairness metrics operate on lists, for example:
 
@@ -159,7 +172,7 @@ subject_labels_dict = make_subject_labels_dict(
 
 
 
-### 1. Intersectional Accuracy
+### Intersectional Accuracy
 
 This asks the question: does the model performance differ accross intersectional groups?
 
@@ -174,7 +187,7 @@ accs = all_intersect_accs(subject_labels_dict, predictions, true_statuses)
 accs
 ```
 
-### 2.  Maximum accuracy difference across intersectional groups
+### Maximum accuracy difference across intersectional groups
 
 This asks, what is the performance gap between best and worst groups?
 
@@ -190,7 +203,7 @@ max_gap = max_intersect_acc_diff(
 max_gap
 ```
 
-### 3. Maximum accuracy ratio across intersectional groups
+### Maximum accuracy ratio across intersectional groups
 
 This asks, how many times better does the best group perform compared to the worst group?
 
@@ -207,11 +220,11 @@ max_ratio_log
 
 A full list of metrics functions provided by the toolkit is available at `api_reference.md`
 
-## Fairness Visualisations 
+## 7. Fairness Visualisations 
 
 Visualisations can make fairness issues interpretable.
 
-### 1. Accuracy by Intersectional Group
+### Accuracy by Intersectional Group
 
 ```python
 from fairness.visualisation import plot_group_accuracies
@@ -221,7 +234,7 @@ plot_group_accuracies(accs)
 
 This visualisation highlights groups with systematically poorer performance.
 
-### 2. Group Size vs Performance
+### Group Size vs Performance
 
 ```python
 from fairness.visualisation import plot_group_size_vs_accuracy
@@ -231,7 +244,7 @@ plot_group_size_vs_accuracy(accs, subject_labels_dict)
 
 This visualisation shows whether poor performance may be driven by small sample sizes.
 
-### 3. Fairness Summary Plot
+### Fairness Summary Plot
 
 ```python
 from fairness.visualisation import plot_fairness_summary
@@ -243,18 +256,16 @@ This visualisation provides an overview suitable for reports and presentations.
 
 ## Interpreting the Results
 
-When reviewing fairness outputs, consider:
+When looking at the fairness results, it helps to ask a few simple questions:
 
-- Are certain intersectional groups disadvantaged?
-- Are differences clinically meaningful, not just statistically different?
-- Are poor results driven by small group sizes?
+- Do some combinations of characteristics (for example, older women or younger men) get worse results than others?
+- Are the differences big enough to matter in a real clinical setting, rather than just being statistically different?
+- Could some poor results be explained by very small numbers of people in certain groups?
 
-Possible mitigation strategies involve:
-
-- collecting more data
-- adjusting decision thresholds
-- using alternative models
-
+If fairness issues are identified, possible ways to address them include:
+- collecting more data for under-represented groups,
+- changing the decision threshold used by the model,
+- trying a different type of model that behaves more consistently across groups.
 
 ## Summary
 

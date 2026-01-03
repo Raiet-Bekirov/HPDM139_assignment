@@ -1,15 +1,12 @@
 # Intersectional Fairness Toolkit
 
-This documentation describes a Python toolkit for evaluating **intersectional fairness**
-in machine learning models applied to **tabular health datasets**.
+This documentation describes a Python toolkit for evaluating intersectional fairness
+in machine learning models applied to tabular health datasets.
 
-The toolkit supports:
-- construction of intersectional protected groups (e.g. sex × age group),
-- alignment of model predictions with protected attributes,
-- computation of group-level and intersectional fairness metrics.
+The toolkit supports construction of intersectional protected groups (e.g. sex × age group), alignment of model predictions with protected attributes, and computation of fairness metrics.
 
-It is designed to be **dataset-agnostic** and **model-agnostic**, and can be integrated
-into a wide range of health data science workflows.
+It is designed to be dataset-agnostic and model-agnostic, and can be integrated
+into a range of health data science workflows.
 
 ---
 

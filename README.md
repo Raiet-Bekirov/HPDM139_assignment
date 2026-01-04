@@ -35,10 +35,10 @@ In this package, intersectional groups are evaluated using differential fairness
 
 ## Installation
 
-Install from TestPyPI (recommended):
+Install from PyPI (recommended):
 
 ```bash
-pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple intersectional-fairness-toolkit==0.1.3
+pip install intersectional-fairness-toolkit==0.2.1
 ```
 
 Alternatively, clone the repository and install the package in editable mode:

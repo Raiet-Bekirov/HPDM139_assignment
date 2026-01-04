@@ -113,17 +113,66 @@ A complete end-to-end example using the UCI Heart Disease dataset is provided at
 
 ## Documentation
 
+The following documentation is provided:
+
 - [Tutorial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial/) 
 - [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference/)
-- [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions/)
 - [Data loading and preprocessing demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/data_demo.ipynb)
-- [Metrics demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/single_metrics_demo.ipynb)
+- [Metrics useage demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/single_metrics_demo.ipynb)
+
+
+## Fairness Metrics Supported
+
+| Metric function | Purpose (plain English) |
+|---|---|
+| [`group_acc`](docs/api_reference.md#group_acc) | Find the accuracy of a group with a specific label |
+| [`group_acc_diff`](docs/api_reference.md#group_acc_diff) | Calculate the absolute difference in accuracy between two groups |
+| [`group_acc_ratio`](docs/api_reference.md#group_acc_ratio) | Calculate the ratio of accuracies between two groups |
+| [`intersect_acc`](docs/api_reference.md#intersect_acc) | Calculate accuracy for an intersectional group |
+| [`all_intersect_accs`](docs/api_reference.md#all_intersect_accs) | Calculate accuracies for all possible intersectional groups |
+| [`max_intersect_acc_diff`](docs/api_reference.md#max_intersect_acc_diff) | Calculate the maximum difference in accuracy across intersectional groups |
+| [`max_intersect_acc_ratio`](docs/api_reference.md#max_intersect_acc_ratio) | Calculate the maximum ratio of accuracies across intersectional groups |
+| [`group_fnr`](docs/api_reference.md#group_fnr) | Find the false negative rate of a group with a specific label |
+| [`group_fnr_diff`](docs/api_reference.md#group_fnr_diff) | Absolute difference in false negative rate between two groups |
+| [`group_fnr_ratio`](docs/api_reference.md#group_fnr_ratio) | Calculate the ratio of false negative rates between two groups |
+| [`intersect_fnr`](docs/api_reference.md#intersect_fnr) | Calculate false negative rate for an intersectional group |
+| [`all_intersect_fnrs`](docs/api_reference.md#all_intersect_fnrs) | Calculate false negative rates for all possible intersectional groups |
+| [`max_intersect_fnr_diff`](docs/api_reference.md#max_intersect_fnr_diff) | Calculate the maximum difference in false negative rate across intersectional groups |
+| [`max_intersect_fnr_ratio`](docs/api_reference.md#max_intersect_fnr_ratio) | Calculate the maximum ratio of false negative rates across intersectional groups |
+| [`group_fpr`](docs/api_reference.md#group_fpr) | Find the false positive rate of a group with a specific label |
+| [`group_fpr_diff`](docs/api_reference.md#group_fpr_diff) | Absolute difference in false positive rate between two groups |
+| [`group_fpr_ratio`](docs/api_reference.md#group_fpr_ratio) | Calculate the ratio of false positive rates between two groups |
+| [`intersect_fpr`](docs/api_reference.md#intersect_fpr) | Calculate false positive rate for an intersectional group |
+| [`all_intersect_fprs`](docs/api_reference.md#all_intersect_fprs) | Calculate false positive rates for all possible intersectional groups |
+| [`max_intersect_fpr_diff`](docs/api_reference.md#max_intersect_fpr_diff) | Calculate the maximum difference in false positive rate across intersectional groups |
+| [`max_intersect_fpr_ratio`](docs/api_reference.md#max_intersect_fpr_ratio) | Calculate the maximum ratio of false positive rates across intersectional groups |
+| [`group_for`](docs/api_reference.md#group_for) | Find the false omission rate of a group with a specific label |
+| [`group_for_diff`](docs/api_reference.md#group_for_diff) | Absolute difference in false omission rate between two groups |
+| [`group_for_ratio`](docs/api_reference.md#group_for_ratio) | Calculate the ratio of false omission rates between two groups |
+| [`intersect_for`](docs/api_reference.md#intersect_for) | Calculate false omission rate for an intersectional group |
+| [`all_intersect_fors`](docs/api_reference.md#all_intersect_fors) | Calculate false omission rates for all possible intersectional groups |
+| [`max_intersect_for_diff`](docs/api_reference.md#max_intersect_for_diff) | Calculate the maximum difference in false omission rate across intersectional groups |
+| [`max_intersect_for_ratio`](docs/api_reference.md#max_intersect_for_ratio) | Calculate the maximum ratio of false omission rates across intersectional groups |
+| [`group_fdr`](docs/api_reference.md#group_fdr) | Find the false discovery rate of a group with a specific label |
+| [`group_fdr_diff`](docs/api_reference.md#group_fdr_diff) | Absolute difference in false discovery rate between two groups |
+| [`group_fdr_ratio`](docs/api_reference.md#group_fdr_ratio) | Calculate the ratio of false discovery rates between two groups |
+| [`intersect_fdr`](docs/api_reference.md#intersect_fdr) | Calculate false discovery rate for an intersectional group |
+| [`all_intersect_fdrs`](docs/api_reference.md#all_intersect_fdrs) | Calculate false discovery rates for all possible intersectional groups |
+| [`max_intersect_fdr_diff`](docs/api_reference.md#max_intersect_fdr_diff) | Calculate the maximum difference in false discovery rate across intersectional groups |
+| [`max_intersect_fdr_ratio`](docs/api_reference.md#max_intersect_fdr_ratio) | Calculate the maximum ratio of false discovery rates across intersectional groups |
+| [`group_to_binary`](docs/api_reference.md#group_to_binary) | Wrap single-group fairness functions so they work with intersectional groups |
+| [`calculate_TP_FN_FP_TN`](docs/api_reference.md#calculate_tp_fn_fp_tn) | Compute confusion-matrix counts (TP, FN, FP, TN) |
+| [`calculate_TPR_TNR_FPR_FNR`](docs/api_reference.md#calculate_tpr_tnr_fpr_fnr) | Compute rate metrics (TPR/TNR/FPR/FNR) from confusion-matrix counts |
+| [`calculate_EOD`](docs/api_reference.md#calculate_eod) | Equal Opportunity Difference between demographic groups |
+| [`calculate_AOD`](docs/api_reference.md#calculate_aod) | Average Odds Difference between demographic groups |
+| [`calculate_DI`](docs/api_reference.md#calculate_di) | Disparate Impact between demographic groups |
+
 
 ## Project context
 
 This package was developed as part of the HPDM139 module (Health Data Science) at the University of Exeter.
 
-
+- [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions/)
 
 ## Reference
 

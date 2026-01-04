@@ -2563,7 +2563,7 @@ X, y = load_features_and_target(df, target_col="HeartDisease")</p>
 
 
 <h2 id="fairness.data.load_csv" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">load_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">load_csv</span></code>
 
 </h2>
 
@@ -2703,7 +2703,7 @@ pandas uses a default integer index.</p>
 
 
 <h2 id="fairness.data.load_features_and_target" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">load_features_and_target</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">target_col</span><span class="p">,</span> <span class="n">drop_cols</span><span class="o">=</span><span class="p">())</span></code>
+            <code class="highlight language-python"><span class="n">load_features_and_target</span></code>
 
 </h2>
 
@@ -2831,7 +2831,7 @@ used only for fairness analysis such as 'age_group').</p>
 
 
 <h2 id="fairness.data.load_heart_csv" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">load_heart_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;HeartDisease&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">load_heart_csv</span></code>
 
 </h2>
 
@@ -2943,7 +2943,7 @@ used only for fairness analysis such as 'age_group').</p>
 
 
 <h2 id="fairness.data.validate_columns" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">validate_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">required</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">validate_columns</span></code>
 
 </h2>
 
@@ -3184,7 +3184,7 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
 
 <h2 id="fairness.preprocess.add_age_group" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">add_age_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">age_col</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">new_col</span><span class="o">=</span><span class="s1">&#39;age_group&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;young&#39;</span><span class="p">,</span> <span class="s1">&#39;older&#39;</span><span class="p">))</span></code>
+            <code class="highlight language-python"><span class="n">add_age_group</span></code>
 
 </h2>
 
@@ -3345,7 +3345,7 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
 
 <h2 id="fairness.preprocess.apply_transforms" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">apply_transforms</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">transforms</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">apply_transforms</span></code>
 
 </h2>
 
@@ -3433,7 +3433,7 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
 
 <h2 id="fairness.preprocess.make_train_test_split" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">make_train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">target_col</span><span class="p">,</span> <span class="n">drop_cols</span><span class="o">=</span><span class="p">(),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">make_train_test_split</span></code>
 
 </h2>
 
@@ -3613,7 +3613,7 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
 
 <h2 id="fairness.preprocess.map_binary_column" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">map_binary_column</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">map_binary_column</span></code>
 
 </h2>
 
@@ -3756,7 +3756,7 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
 
 <h2 id="fairness.preprocess.preprocess_tabular" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">preprocess_tabular</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">drop_cols</span><span class="o">=</span><span class="p">(),</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">preprocess_tabular</span></code>
 
 </h2>
 
@@ -3923,7 +3923,7 @@ an evaluation DataFrame aligned with model predictions and true labels.</p>
 
 
 <h2 id="fairness.groups.make_eval_df" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">make_eval_df</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">df_test</span><span class="p">,</span> <span class="n">protected</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">label_col</span><span class="o">=</span><span class="s1">&#39;subject_label&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">make_eval_df</span></code>
 
 </h2>
 
@@ -4065,7 +4065,7 @@ true_statuses  = eval_df["y_true"].tolist()
 
 
 <h2 id="fairness.groups.make_intersectional_labels" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">make_intersectional_labels</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">protected</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">kv_sep</span><span class="o">=</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">make_intersectional_labels</span></code>
 
 </h2>
 
@@ -4239,7 +4239,7 @@ true_statuses  = eval_df["y_true"].tolist()
 
 
 <h2 id="fairness.metrics.all_intersect_accs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">all_intersect_accs</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">all_intersect_accs</span></code>
 
 </h2>
 
@@ -4349,7 +4349,7 @@ evaluation dataset.</p>
 
 
 <h2 id="fairness.metrics.all_intersect_fdrs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">all_intersect_fdrs</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">all_intersect_fdrs</span></code>
 
 </h2>
 
@@ -4459,7 +4459,7 @@ separating categories) to their false discovery rates.</p>
 
 
 <h2 id="fairness.metrics.all_intersect_fnrs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">all_intersect_fnrs</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">all_intersect_fnrs</span></code>
 
 </h2>
 
@@ -4569,7 +4569,7 @@ separating categories) to their false negative rates.</p>
 
 
 <h2 id="fairness.metrics.all_intersect_fors" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">all_intersect_fors</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">all_intersect_fors</span></code>
 
 </h2>
 
@@ -4679,7 +4679,7 @@ separating categories) to their false omission rates.</p>
 
 
 <h2 id="fairness.metrics.all_intersect_fprs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">all_intersect_fprs</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">all_intersect_fprs</span></code>
 
 </h2>
 
@@ -4789,7 +4789,7 @@ separating categories) to their false positive rates.</p>
 
 
 <h2 id="fairness.metrics.group_acc" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_acc</span><span class="p">(</span><span class="n">group_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_acc</span></code>
 
 </h2>
 
@@ -4914,7 +4914,7 @@ np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_acc_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_acc_diff</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_acc_diff</span></code>
 
 </h2>
 
@@ -5054,7 +5054,7 @@ np.nan if either group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_acc_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_acc_ratio</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_acc_ratio</span></code>
 
 </h2>
 
@@ -5212,7 +5212,7 @@ if either group has no observations or if either accuracy is 0.</p>
 
 
 <h2 id="fairness.metrics.group_fdr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fdr</span><span class="p">(</span><span class="n">group_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fdr</span></code>
 
 </h2>
 
@@ -5337,7 +5337,7 @@ np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fdr_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fdr_diff</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fdr_diff</span></code>
 
 </h2>
 
@@ -5478,7 +5478,7 @@ Returns np.nan if either group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fdr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fdr_ratio</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fdr_ratio</span></code>
 
 </h2>
 
@@ -5637,7 +5637,7 @@ discovery rate is 0.</p>
 
 
 <h2 id="fairness.metrics.group_fnr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fnr</span><span class="p">(</span><span class="n">group_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fnr</span></code>
 
 </h2>
 
@@ -5762,7 +5762,7 @@ np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fnr_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fnr_diff</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fnr_diff</span></code>
 
 </h2>
 
@@ -5903,7 +5903,7 @@ Returns np.nan if either group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fnr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fnr_ratio</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fnr_ratio</span></code>
 
 </h2>
 
@@ -6062,7 +6062,7 @@ rate is 0.</p>
 
 
 <h2 id="fairness.metrics.group_for" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_for</span><span class="p">(</span><span class="n">group_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_for</span></code>
 
 </h2>
 
@@ -6187,7 +6187,7 @@ np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_for_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_for_diff</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_for_diff</span></code>
 
 </h2>
 
@@ -6328,7 +6328,7 @@ Returns np.nan if either group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_for_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_for_ratio</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_for_ratio</span></code>
 
 </h2>
 
@@ -6487,7 +6487,7 @@ rate is 0.</p>
 
 
 <h2 id="fairness.metrics.group_fpr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fpr</span><span class="p">(</span><span class="n">group_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fpr</span></code>
 
 </h2>
 
@@ -6612,7 +6612,7 @@ np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fpr_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fpr_diff</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fpr_diff</span></code>
 
 </h2>
 
@@ -6753,7 +6753,7 @@ Returns np.nan if either group has no observations.</p>
 
 
 <h2 id="fairness.metrics.group_fpr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_fpr_ratio</span><span class="p">(</span><span class="n">group_a_label</span><span class="p">,</span> <span class="n">group_b_label</span><span class="p">,</span> <span class="n">subject_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_fpr_ratio</span></code>
 
 </h2>
 
@@ -6912,7 +6912,7 @@ rate is 0.</p>
 
 
 <h2 id="fairness.metrics.intersect_acc" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">intersect_acc</span><span class="p">(</span><span class="n">group_labels_dict</span><span class="p">,</span> <span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">intersect_acc</span></code>
 
 </h2>
 
@@ -7025,7 +7025,7 @@ Returns np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.intersect_fdr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">intersect_fdr</span><span class="p">(</span><span class="n">group_labels_dict</span><span class="p">,</span> <span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">intersect_fdr</span></code>
 
 </h2>
 
@@ -7153,7 +7153,7 @@ group. Returns np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.intersect_fnr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">intersect_fnr</span><span class="p">(</span><span class="n">group_labels_dict</span><span class="p">,</span> <span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">intersect_fnr</span></code>
 
 </h2>
 
@@ -7281,7 +7281,7 @@ group. Returns np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.intersect_for" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">intersect_for</span><span class="p">(</span><span class="n">group_labels_dict</span><span class="p">,</span> <span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">intersect_for</span></code>
 
 </h2>
 
@@ -7409,7 +7409,7 @@ group. Returns np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.intersect_fpr" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">intersect_fpr</span><span class="p">(</span><span class="n">group_labels_dict</span><span class="p">,</span> <span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">intersect_fpr</span></code>
 
 </h2>
 
@@ -7537,7 +7537,7 @@ group. Returns np.nan if the group has no observations.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_acc_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_acc_diff</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_acc_diff</span></code>
 
 </h2>
 
@@ -7645,7 +7645,7 @@ Returns np.nan if any group has no observations.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_acc_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_acc_ratio</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_acc_ratio</span></code>
 
 </h2>
 
@@ -7770,7 +7770,7 @@ or if any accuracy is 0.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_fdr_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_fdr_diff</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_fdr_diff</span></code>
 
 </h2>
 
@@ -7879,7 +7879,7 @@ observations.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_fdr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_fdr_ratio</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_fdr_ratio</span></code>
 
 </h2>
 
@@ -8005,7 +8005,7 @@ observations or if any false discovery rate is 0.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_fnr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_fnr_ratio</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_fnr_ratio</span></code>
 
 </h2>
 
@@ -8131,7 +8131,7 @@ observations or if any false negative rate is 0.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_for_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_for_diff</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_for_diff</span></code>
 
 </h2>
 
@@ -8240,7 +8240,7 @@ observations.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_for_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_for_ratio</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_for_ratio</span></code>
 
 </h2>
 
@@ -8365,7 +8365,7 @@ observations or if any false omission rate is 0.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_fpr_diff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_fpr_diff</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_fpr_diff</span></code>
 
 </h2>
 
@@ -8474,7 +8474,7 @@ observations.</p>
 
 
 <h2 id="fairness.metrics.max_intersect_fpr_ratio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">max_intersect_fpr_ratio</span><span class="p">(</span><span class="n">subject_labels_dict</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">true_statuses</span><span class="p">,</span> <span class="n">natural_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">max_intersect_fpr_ratio</span></code>
 
 </h2>
 
@@ -8635,7 +8635,7 @@ observations or if any false positive rate is 0.</p>
 
 
 <h2 id="fairness.single_metrics.calculate_AOD" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">calculate_AOD</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">group_labels</span><span class="p">,</span> <span class="n">privileged_label</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_AOD</span></code>
 
 </h2>
 
@@ -8766,7 +8766,7 @@ as unprivileged.</p>
 
 
 <h2 id="fairness.single_metrics.calculate_DI" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">calculate_DI</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">group_labels</span><span class="p">,</span> <span class="n">privileged_label</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_DI</span></code>
 
 </h2>
 
@@ -8880,7 +8880,7 @@ for the specified group.</p>
 
 
 <h2 id="fairness.single_metrics.calculate_EOD" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">calculate_EOD</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">group_labels</span><span class="p">,</span> <span class="n">privileged_label</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_EOD</span></code>
 
 </h2>
 
@@ -9017,7 +9017,7 @@ as unprivileged.</p>
 
 
 <h2 id="fairness.single_metrics.calculate_TPR_TNR_FPR_FNR" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">calculate_TPR_TNR_FPR_FNR</span><span class="p">(</span><span class="n">tp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_TPR_TNR_FPR_FNR</span></code>
 
 </h2>
 
@@ -9043,7 +9043,7 @@ as unprivileged.</p>
 
 
 <h2 id="fairness.single_metrics.calculate_TP_FN_FP_TN" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">calculate_TP_FN_FP_TN</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">calculate_TP_FN_FP_TN</span></code>
 
 </h2>
 
@@ -9071,7 +9071,7 @@ False Negatives (FN), True Negatives (TN), and False Positives (FP).</p>
 
 
 <h2 id="fairness.single_metrics.group_to_binary" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">group_to_binary</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">privileged_label</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">group_to_binary</span></code>
 
 </h2>
 
@@ -9129,7 +9129,7 @@ returns: numpy array (1 = privileged, 0 = unprivileged)</p>
 
 
 <h2 id="fairness.adapters.make_subject_labels_dict" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">make_subject_labels_dict</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">protected_cols</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">make_subject_labels_dict</span></code>
 
 </h2>
 
@@ -9217,7 +9217,7 @@ returns: numpy array (1 = privileged, 0 = unprivileged)</p>
 
 
 <h2 id="fairness.adapters.unpack_eval_df" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">unpack_eval_df</span><span class="p">(</span><span class="n">eval_df</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">unpack_eval_df</span></code>
 
 </h2>
 
@@ -9364,7 +9364,7 @@ returns: numpy array (1 = privileged, 0 = unprivileged)</p>
 
 
 <h3 id="fairness.visualisation.Plotter.disparity" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">disparity</span><span class="p">(</span><span class="n">by_group_df</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">ref_group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;ratio&#39;</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">disparity</span></code>
 
 </h3>
 
@@ -9387,7 +9387,7 @@ returns: numpy array (1 = privileged, 0 = unprivileged)</p>
 
 
 <h3 id="fairness.visualisation.Plotter.error_breakdown" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">error_breakdown</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">error_breakdown</span></code>
 
 </h3>
 
@@ -9411,7 +9411,7 @@ normalize=False:
 
 
 <h3 id="fairness.visualisation.Plotter.metrics_bars" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">metrics_bars</span><span class="p">(</span><span class="n">by_group_df</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort_groups</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">metrics_bars</span></code>
 
 </h3>
 
@@ -9430,7 +9430,7 @@ as small multiples (one subplot per metric).</p>
 
 
 <h3 id="fairness.visualisation.Plotter.model_tradeoff" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">model_tradeoff</span><span class="p">(</span><span class="n">models_df</span><span class="p">,</span> <span class="n">perf_metric</span><span class="p">,</span> <span class="n">fairness_metric</span><span class="p">,</span> <span class="n">label_col</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">model_tradeoff</span></code>
 
 </h3>
 
@@ -9448,7 +9448,7 @@ as small multiples (one subplot per metric).</p>
 
 
 <h3 id="fairness.visualisation.Plotter.threshold_sweep" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">threshold_sweep</span><span class="p">(</span><span class="n">threshold_df</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">threshold_sweep</span></code>
 
 </h3>
 

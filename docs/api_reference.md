@@ -9,14 +9,14 @@
 ## fairness.groups
 ::: fairness.groups
 
+## fairness.adapters
+::: fairness.adapters
+
 ## fairness.metrics
 ::: fairness.metrics
 
 ## fairness.single_metrics
 ::: fairness.single_metrics
-
-## fairness.adapters
-::: fairness.adapters
 
 ## fairness.visualisation
 ::: fairness.visualisation

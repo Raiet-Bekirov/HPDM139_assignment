@@ -1,6 +1,6 @@
 # Installation and Running Instructions
 
-This document explains how to install and run the *Intersectional Fairness Toolkit* from the submitted ZIP file.
+This document explains how to install and run the *Intersectional Fairness Toolkit* from the a ZIP file.
 
 The toolkit is designed to be used as part of a health data science workflow for evaluating intersectional fairness in tabular clinical datasets.
 
@@ -68,7 +68,7 @@ These notebooks demonstrate:
 - visualising and interpreting results.
 
 
-5. View the documentation
+## 5. View the documentation
 
 Documentation source files are located in the docs/ directory.
 

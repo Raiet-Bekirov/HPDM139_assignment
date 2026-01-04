@@ -27,7 +27,18 @@ No prior fairness expertise is required.
 
 ## 1. Installation
 
-First, create and activate a clean python environment (recommended).
+It is recommended to install the toolkit in a clean Python environment to avoid
+dependency conflicts.
+
+### Option A: Using conda
+
+```bash
+conda create -n fairness python=3.12
+conda activate fairness
+pip install intersectional-fairness-toolkit
+```
+
+### Option B: Using `venv`
 
 On MacOS/ Linux:
 
@@ -45,8 +56,9 @@ fairness-env\Scripts\activate
 Then, install the toolkit:
 
 ```bash
-pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple intersectional-fairness-toolkit==0.1.3
+pip install intersectional-fairness-toolkit
 ```
+
 
 ## 2. Load a clinical dataset
 

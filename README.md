@@ -113,19 +113,16 @@ A complete end-to-end example using the UCI Heart Disease dataset is provided at
 
 ## Documentation
 
-Additional documentation is available [here](https://raiet-bekirov.github.io/HPDM139_assignment/), including:
-
-- [Tutorial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial/) - a step-by-step workflow explanation
-- [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference/) - documentation of each function
-- [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions/) - rationale behind design choices
-
-
+- [Tutorial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial/) 
+- [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference/)
+- [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions/)
+- [Data loading and preprocessing demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/data_demo.ipnyb)
+- [Metrics demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/single_metrics_demo.ipnyb)
 
 ## Project context
 
 This package was developed as part of the HPDM139 module (Health Data Science) at the University of Exeter.
 
-Agendas and minutes of team meetings are in the [Team portfolio](https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/contents/) 
 
 
 ## Reference

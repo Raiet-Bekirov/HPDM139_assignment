@@ -175,6 +175,8 @@ The following documentation is provided:
 This package was developed as part of the HPDM139 module (Health Data Science) at the University of Exeter.
 
 - [Design decisions](https://raiet-bekirov.github.io/HPDM139_assignment/design_decisions/)
+- [Team portfolio](
+https://raiet-bekirov.github.io/HPDM139_assignment/team_portfolio/contents/)
 
 ## Reference
 

@@ -1067,16 +1067,16 @@
 
   <h1>Design decisions</h1>
 
-<h2 id="design-decisions">Design Decisions</h2>
+<h2 id="design-decisions">Design Decisions<a class="headerlink" href="#design-decisions" title="Permanent link">&para;</a></h2>
 <p>This document outlines the key design decisions made in the development of the Intersectional Fairness Toolkit.</p>
-<h3 id="1-purpose-and-scope">1. Purpose and Scope</h3>
+<h3 id="1-purpose-and-scope">1. Purpose and Scope<a class="headerlink" href="#1-purpose-and-scope" title="Permanent link">&para;</a></h3>
 <p>The purpose of this project is to provide a lightweight, transparent, and extensible Python toolkit for evaluating intersectional fairness in machine-learning models applied to tabular health datasets.</p>
 <p>The toolkit is intended to:</p>
 <ul>
 <li>Support health data scientists and researchers</li>
 <li>Demonstrate best practice software engineering for an MSc-level project</li>
 </ul>
-<h3 id="2-intended-use-and-audience">2. Intended Use and Audience</h3>
+<h3 id="2-intended-use-and-audience">2. Intended Use and Audience<a class="headerlink" href="#2-intended-use-and-audience" title="Permanent link">&para;</a></h3>
 <p>The main intended users are:</p>
 <ul>
 <li>Health data science students</li>
@@ -1089,7 +1089,7 @@
 <li>Predictions (y_pred) are generated externally by any model</li>
 </ul>
 <p>Users may want to use their own metrics, models, or datasets. As a result, the toolkit is designed to be model-agnostic and dataset-agnostic.</p>
-<h3 id="3-separation-of-concerns">3. Separation of Concerns</h3>
+<h3 id="3-separation-of-concerns">3. Separation of Concerns<a class="headerlink" href="#3-separation-of-concerns" title="Permanent link">&para;</a></h3>
 <p>A core design principle was separation of responsibilities across modules.</p>
 <p>Fairness analysis typically involves:
 - Data loading and preprocessing
@@ -1103,7 +1103,7 @@
 <li>Metrics operate on simple, explicit inputs</li>
 </ul>
 <p>This makes it easier to swap models, reuse metrics, and test components independently.</p>
-<h3 id="4-package-structure">4. Package Structure</h3>
+<h3 id="4-package-structure">4. Package Structure<a class="headerlink" href="#4-package-structure" title="Permanent link">&para;</a></h3>
 <p>The project is implemented as a Python package using a src/ layout:</p>
 <p>src/
   fairness/
@@ -1127,7 +1127,7 @@
 </li>
 </ul>
 <p>This structure supports reusability, testing and long-term extensibility</p>
-<h3 id="5-data-flow-into-fairness-metrics">5. Data Flow Into Fairness Metrics</h3>
+<h3 id="5-data-flow-into-fairness-metrics">5. Data Flow Into Fairness Metrics<a class="headerlink" href="#5-data-flow-into-fairness-metrics" title="Permanent link">&para;</a></h3>
 <p>A key design decision was to standardise how data is passed into fairness metrics.</p>
 <p>Rather than passing many loosely related arrays, the toolkit constructs a single evaluation DataFrame <code>eval_df</code> with aligned columns:</p>
 <ul>
@@ -1137,7 +1137,7 @@
 </ul>
 <p>Each row corresponds to one individual in the test set. This maintains alignment between predictions and protected attributes.</p>
 <p>Adapters are provided to unpack this DataFrame into formats required by different metric implementations.</p>
-<h3 id="6-intersectional-group-construction">6. Intersectional Group Construction</h3>
+<h3 id="6-intersectional-group-construction">6. Intersectional Group Construction<a class="headerlink" href="#6-intersectional-group-construction" title="Permanent link">&para;</a></h3>
 <p>Intersectional groups are defined by combining multiple protected attributes (e.g. Sex &amp; age_group).</p>
 <p>Design decisions include:</p>
 <ul>
@@ -1146,7 +1146,7 @@
 <li>Row-by-row alignment with predictions</li>
 </ul>
 <p>The toolkit avoids hard-coding protected attributes, allowing users to define the intersections they wish to examine.</p>
-<h3 id="7-choice-of-fairness-metrics">7. Choice of Fairness Metrics</h3>
+<h3 id="7-choice-of-fairness-metrics">7. Choice of Fairness Metrics<a class="headerlink" href="#7-choice-of-fairness-metrics" title="Permanent link">&para;</a></h3>
 <p>The toolkit supports group-based and intersectional fairness metrics, including:</p>
 <ul>
 <li>Accuracy differences and ratios</li>
@@ -1158,14 +1158,14 @@
 </ul>
 <p>These metrics are of clinical importance, and allow examination of worst-case harms, as wekl as averages.</p>
 <p>Metrics are implemented as functions, making them easy to test and reuse.</p>
-<h3 id="8-visualisation-strategy">8. Visualisation Strategy</h3>
+<h3 id="8-visualisation-strategy">8. Visualisation Strategy<a class="headerlink" href="#8-visualisation-strategy" title="Permanent link">&para;</a></h3>
 <p>Visualisation code is separated into its own module (plots/).</p>
 <p>Design goals:</p>
 <ul>
 <li>Accept outputs from metric functions</li>
 <li>Support quick identification of high-risk groups</li>
 </ul>
-<h3 id="9-documentation-strategy">9. Documentation Strategy</h3>
+<h3 id="9-documentation-strategy">9. Documentation Strategy<a class="headerlink" href="#9-documentation-strategy" title="Permanent link">&para;</a></h3>
 <p>Tools</p>
 <ul>
 <li>MkDocs with Material theme</li>
@@ -1180,10 +1180,10 @@
 <li>design_decisions.md, this document</li>
 <li>team_portfolio/, evidence of collaboration</li>
 </ul>
-<h3 id="10-collaboration-and-extensibility">10. Collaboration and Extensibility</h3>
+<h3 id="10-collaboration-and-extensibility">10. Collaboration and Extensibility<a class="headerlink" href="#10-collaboration-and-extensibility" title="Permanent link">&para;</a></h3>
 <p>The toolkit was designed to support parallel development. Metrics, visualisations, and pipelines can evolve independently.</p>
 <p>New datasets and metrics can be added without refactoring core code.</p>
-<h3 id="11-packaging-and-distribution">11. Packaging and Distribution</h3>
+<h3 id="11-packaging-and-distribution">11. Packaging and Distribution<a class="headerlink" href="#11-packaging-and-distribution" title="Permanent link">&para;</a></h3>
 <p>The project is configured using pyproject.toml and is installable via:</p>
 <p>pip install -e .</p>
 <p>The group agreed to:</p>

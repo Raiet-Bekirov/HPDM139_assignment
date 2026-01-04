@@ -1149,7 +1149,7 @@
 
 
 
-<h1 id="tutorial">Tutorial</h1>
+<h1 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permanent link">&para;</a></h1>
 <p>This toolkit helps you check whether a machine-learning model treats different groups of people fairly when working with health data stored in tables (for example, CSV files).</p>
 <p>It lets you:</p>
 <ul>
@@ -1170,7 +1170,7 @@
 <li>Visualise fairness using three key plots</li>
 </ol>
 <p>No prior fairness expertise is required.</p>
-<h2 id="1-installation">1. Installation</h2>
+<h2 id="1-installation">1. Installation<a class="headerlink" href="#1-installation" title="Permanent link">&para;</a></h2>
 <p>First, create and activate a clean python environment (recommended).</p>
 <p>On MacOS/ Linux:</p>
 <pre><code class="language-bash">python -m venv fairness-env
@@ -1183,7 +1183,7 @@ fairness-env\Scripts\activate
 <p>Then, install the toolkit:</p>
 <pre><code class="language-bash">pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple intersectional-fairness-toolkit==0.1.3
 </code></pre>
-<h2 id="2-load-a-clinical-dataset">2. Load a clinical dataset</h2>
+<h2 id="2-load-a-clinical-dataset">2. Load a clinical dataset<a class="headerlink" href="#2-load-a-clinical-dataset" title="Permanent link">&para;</a></h2>
 <p>For this tutorial, we will use the <code>heart failure prediction dataset</code>. This dataset contains 11 features that can be used to predict possible heart disease.</p>
 <p>Download the dataset:</p>
 <pre><code class="language-python">import pandas as pd
@@ -1198,7 +1198,7 @@ df = load_heart_csv(url)
 <li>a binary outcome (HeartDisease)</li>
 <li>protected attributes such as Sex and Age</li>
 </ul>
-<h2 id="3-add-protected-attributes-and-prepare-features-for-modelling">3. Add protected attributes and prepare features for modelling</h2>
+<h2 id="3-add-protected-attributes-and-prepare-features-for-modelling">3. Add protected attributes and prepare features for modelling<a class="headerlink" href="#3-add-protected-attributes-and-prepare-features-for-modelling" title="Permanent link">&para;</a></h2>
 <pre><code class="language-python">from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
 
 df = add_age_group(df)
@@ -1219,7 +1219,7 @@ split = make_train_test_split(
 <li>a test set, which is used to check how well the model performs on new, unseen data.</li>
 </ul>
 <p>It returns these as <code>X_train</code>, <code>X_test</code>, <code>y_train</code>, and <code>y_test</code>, which are ready to be passed into a machine-learning model.</p>
-<h2 id="4-train-a-machine-learning-model">4. Train a machine learning model</h2>
+<h2 id="4-train-a-machine-learning-model">4. Train a machine learning model<a class="headerlink" href="#4-train-a-machine-learning-model" title="Permanent link">&para;</a></h2>
 <p>The toolkit is designed to be model agnostic. Here we train a simple model using logistic regression.</p>
 <pre><code class="language-python">from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
@@ -1240,7 +1240,7 @@ y_pred = model.predict(split.X_test)
 <li>a logistic regression classifier.</li>
 </ul>
 <p>The trained model is then used to generate predictions on the test set.</p>
-<h2 id="5-build-an-evaluation-table-for-fairness-analysis">5. Build an evaluation table for fairness analysis</h2>
+<h2 id="5-build-an-evaluation-table-for-fairness-analysis">5. Build an evaluation table for fairness analysis<a class="headerlink" href="#5-build-an-evaluation-table-for-fairness-analysis" title="Permanent link">&para;</a></h2>
 <pre><code class="language-python">from fairness.groups import make_eval_df
 
 df_test = df.loc[split.X_test.index]
@@ -1260,7 +1260,7 @@ eval_df = make_eval_df(
 </ul>
 <p>into a single evaluation table (<code>eval_df</code>).</p>
 <p>Each row represents one individual in the test set, with all information required for intersectional fairness analysis.</p>
-<h2 id="6-fairness-metrics">6. Fairness Metrics</h2>
+<h2 id="6-fairness-metrics">6. Fairness Metrics<a class="headerlink" href="#6-fairness-metrics" title="Permanent link">&para;</a></h2>
 <p>Many fairness metrics operate on lists, for example:</p>
 <ul>
 <li>a list of group labels</li>
@@ -1277,7 +1277,7 @@ subject_labels_dict = make_subject_labels_dict(
     protected_cols=[&quot;Sex&quot;, &quot;age_group&quot;]
 )
 </code></pre>
-<h3 id="6a-intersectional-accuracy">6a. Intersectional Accuracy</h3>
+<h3 id="6a-intersectional-accuracy">6a. Intersectional Accuracy<a class="headerlink" href="#6a-intersectional-accuracy" title="Permanent link">&para;</a></h3>
 <p>This asks the question: does the model performance differ accross intersectional groups?</p>
 <pre><code class="language-python">from fairness.metrics import (
     all_intersect_accs,
@@ -1288,7 +1288,7 @@ subject_labels_dict = make_subject_labels_dict(
 accs = all_intersect_accs(subject_labels_dict, predictions, true_statuses)
 accs
 </code></pre>
-<h3 id="6b-maximum-accuracy-difference-across-intersectional-groups">6b. Maximum accuracy difference across intersectional groups</h3>
+<h3 id="6b-maximum-accuracy-difference-across-intersectional-groups">6b. Maximum accuracy difference across intersectional groups<a class="headerlink" href="#6b-maximum-accuracy-difference-across-intersectional-groups" title="Permanent link">&para;</a></h3>
 <p>This asks, what is the performance gap between best and worst groups?</p>
 <pre><code class="language-python">
 max_gap = max_intersect_acc_diff(
@@ -1299,7 +1299,7 @@ max_gap = max_intersect_acc_diff(
 
 max_gap
 </code></pre>
-<h3 id="6c-maximum-accuracy-ratio-across-intersectional-groups">6c. Maximum accuracy ratio across intersectional groups</h3>
+<h3 id="6c-maximum-accuracy-ratio-across-intersectional-groups">6c. Maximum accuracy ratio across intersectional groups<a class="headerlink" href="#6c-maximum-accuracy-ratio-across-intersectional-groups" title="Permanent link">&para;</a></h3>
 <p>This asks, how many times better does the best group perform compared to the worst group?</p>
 <pre><code class="language-python">max_ratio_log = max_intersect_acc_ratio(
     subject_labels_dict=subject_labels_dict,
@@ -1312,21 +1312,21 @@ max_ratio_log
 </code></pre>
 <hr />
 <p>These are three examples of fairness metrics which can be computed using this toolkit. A full list of metrics functions provided by the toolkit is available at <code>api_reference.md</code></p>
-<h2 id="7-fairness-visualisations">7. Fairness Visualisations</h2>
+<h2 id="7-fairness-visualisations">7. Fairness Visualisations<a class="headerlink" href="#7-fairness-visualisations" title="Permanent link">&para;</a></h2>
 <p>Visualisations can make fairness issues interpretable.</p>
-<h3 id="7a-accuracy-by-intersectional-group">7a. Accuracy by Intersectional Group</h3>
+<h3 id="7a-accuracy-by-intersectional-group">7a. Accuracy by Intersectional Group<a class="headerlink" href="#7a-accuracy-by-intersectional-group" title="Permanent link">&para;</a></h3>
 <pre><code class="language-python">from fairness.visualisation import plot_group_accuracies
 
 plot_group_accuracies(accs)
 </code></pre>
 <p>This visualisation highlights groups with systematically poorer performance.</p>
-<h3 id="7b-group-size-vs-performance">7b. Group Size vs Performance</h3>
+<h3 id="7b-group-size-vs-performance">7b. Group Size vs Performance<a class="headerlink" href="#7b-group-size-vs-performance" title="Permanent link">&para;</a></h3>
 <pre><code class="language-python">from fairness.visualisation import plot_group_size_vs_accuracy
 
 plot_group_size_vs_accuracy(accs, subject_labels_dict)
 </code></pre>
 <p>This visualisation shows whether poor performance may be driven by small sample sizes.</p>
-<h3 id="7c-fairness-summary-plot">7c. Fairness Summary Plot</h3>
+<h3 id="7c-fairness-summary-plot">7c. Fairness Summary Plot<a class="headerlink" href="#7c-fairness-summary-plot" title="Permanent link">&para;</a></h3>
 <pre><code class="language-python">from fairness.visualisation import plot_fairness_summary
 
 plot_fairness_summary(accs)
@@ -1334,7 +1334,7 @@ plot_fairness_summary(accs)
 <p>This visualisation provides an overview suitable for reports and presentations.</p>
 <hr />
 <p>These are three examples of fairness visualisations which can be produced using this toolkit. A full list of visualisation functions provided by the toolkit is available at <code>api_reference.md</code></p>
-<h2 id="interpreting-the-results">Interpreting the Results</h2>
+<h2 id="interpreting-the-results">Interpreting the Results<a class="headerlink" href="#interpreting-the-results" title="Permanent link">&para;</a></h2>
 <p>When looking at the fairness results, it helps to ask a few simple questions:</p>
 <ul>
 <li>Do some combinations of characteristics (for example, older women or younger men) get worse results than others?</li>
@@ -1347,7 +1347,7 @@ plot_fairness_summary(accs)
 <li>changing the decision threshold used by the model,</li>
 <li>trying a different type of model that behaves more consistently across groups.</li>
 </ul>
-<h2 id="summary">Summary</h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this tutorial we demonstrated how to:</p>
 <ul>
 <li>Install and use the toolkit</li>

@@ -1028,14 +1028,18 @@
 <p>Bias can arise when model predictions differ across protected attributes such as sex, age, ethnicity, or disability status. A growing number of tools exist to help researchers and practitioners evaluate fairness in machine learning models; however, many focus on single protected attributes in isolation.</p>
 <h2 id="intersectional-fairness">Intersectional Fairness<a class="headerlink" href="#intersectional-fairness" title="Permanent link">&para;</a></h2>
 <p>This package provides tools which allow researchers to evaluate fairness across intersections of protected attributes (<a href="https://arxiv.org/abs/1807.08362">Foulds, 2019</a>), rather than considering each attribute independently.</p>
-<p>For example, instead of checking:
-- men vs women
-- younger vs older patients</p>
-<p>We check:
-- young women
-- older women
-- young men
-- older men</p>
+<p>For example, instead of checking:</p>
+<ul>
+<li>men vs women</li>
+<li>younger vs older patients</li>
+</ul>
+<p>We check:</p>
+<ul>
+<li>young women</li>
+<li>older women</li>
+<li>young men</li>
+<li>older men</li>
+</ul>
 <p>This approach is motivated by the observation that unfairness can be hidden when outcomes are averaged over broad groups. Disparities often emerge at the intersections of attributes, where individuals may experience compounded or 'double' disadvantage. For instance, older women may be treated less favourably than either women or older patients considered as marginal groups alone.</p>
 <p>In this package, intersectional groups are evaluated using differential fairness metrics to quantify worst-case disparities in model outcomes.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>

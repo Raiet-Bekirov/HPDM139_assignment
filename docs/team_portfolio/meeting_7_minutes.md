@@ -57,5 +57,3 @@ No further meetings were deemed necessary.
 
 Decision:
 The project was approved for final submission.
-
-The meeting concluded with thanks to all members for their contributions throughout the project.

@@ -14,11 +14,6 @@ GenAI tools were used ethically and responsibly to assist in the development of 
 - To generate images, figures or diagrams
 - To proofread and correct spelling or grammar errors
 - To format citations or references
-- To support debugging of Python code you have written.
+- To support debugging of Python code.
 - To improve the quality of Python docstrings
 - To improve code quality
-
-
-## Links to record of AI use:
-
-https://chatgpt.com/g/g-p-691598f66a1c8191baba223174d4cfeb-hdpm139-assignment-2/project

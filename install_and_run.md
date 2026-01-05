@@ -107,6 +107,7 @@ Then open one of the following notebooks:
 - `examples/uci_heart_demo.ipynb`
 - `examples/metrics_demo.ipynb`
 - `examples/single_metrics_demo.ipynb`
+- `examples/visualisation_demo.ipynb`
 
 These notebooks demonstrate:
 - loading and preprocessing data

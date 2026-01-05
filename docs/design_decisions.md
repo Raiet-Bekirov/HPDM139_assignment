@@ -32,6 +32,7 @@ Users may want to use their own metrics, models, or datasets. As a result, the t
 A core design principle was separation of responsibilities across modules.
 
 Fairness analysis typically involves:
+
 - Data loading and preprocessing
 - Model training (external)
 - Fairness evaluation
@@ -50,21 +51,19 @@ This makes it easier to swap models, reuse metrics, and test components independ
 The project is implemented as a Python package using a src/ layout:
 
 src/
-  fairness/
-    data.py
-    preprocess.py
-    groups.py
-    adapters.py
-    metrics/
-    plots/
-    demo/
+...fairness/
+......data.py
+......preprocess.py
+......groups.py
+......adapters.py
+......metrics.py
+......single_metrics.py
+......visualisations.py
 
 Key design choices:
 
 - using src/ Prevents accidental imports from the repository root.
-
 - Each module has a single responsibility (e.g. groups.py only handles group construction).
-
 - Functions accept and return plain Python objects (DataFrame, lists, dicts)
 
 This structure supports reusability, testing and long-term extensibility

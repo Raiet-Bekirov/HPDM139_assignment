@@ -51,7 +51,7 @@ cd HPDM139_assignment
 pip install -e .
 ```
 
-To install the package from a .ZIP file, please follow the instructions at [install_and_run.md](install_and_run.md)
+To install the package from a .ZIP file, please follow the instructions at [INSTALL_AND_RUN.md](INSTALL_AND_RUN.md)
 
 
 ## Example usage

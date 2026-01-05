@@ -51,7 +51,7 @@ cd HPDM139_assignment
 pip install -e .
 ```
 
-To install the package from a .ZIP file, please follow the instructions at [install_and_run.md](install_and_run.md)
+To install the package from a .ZIP file, please follow the instructions at [INSTALL_AND_RUN.md](INSTALL_AND_RUN.md)
 
 
 ## Example usage
@@ -123,7 +123,8 @@ The following documentation is provided:
 - [Tutorial](https://raiet-bekirov.github.io/HPDM139_assignment/tutorial/) 
 - [API reference](https://raiet-bekirov.github.io/HPDM139_assignment/api_reference/)
 - [Dataset preprocessing demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/data_demo.ipynb)
-- [Metrics useage demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/single_metrics_demo.ipynb)
+- [Single group fairness metrics usage demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/single_metrics_demo.ipynb)
+- [Intersectional group fairness metrics usage demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/metrics_demo.ipynb)
 - [Visualisation demo](https://github.com/Raiet-Bekirov/HPDM139_assignment/blob/main/examples/visualisation_demo.ipynb)
 
 ## Fairness Metrics Supported

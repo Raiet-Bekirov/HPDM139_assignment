@@ -17,3 +17,8 @@ GenAI tools were used ethically and responsibly to assist in the development of 
 - To support debugging of Python code.
 - To improve the quality of Python docstrings
 - To improve code quality
+
+
+Links to record of AI prompts:
+
+https://chatgpt.com/g/g-p-691598f66a1c8191baba223174d4cfeb-hdpm139-assignment-2/project

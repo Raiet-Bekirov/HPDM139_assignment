@@ -27,14 +27,6 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Iterable, Optional, Sequence, Tuple, Union
-
-import pandas as pd
-
-PathLike = Union[str, Path]
-
-
-from pathlib import Path
-from typing import Optional, Sequence, Union
 import urllib.parse
 
 import pandas as pd
@@ -96,7 +88,6 @@ def load_csv(
     return df
 
 
-
 def validate_columns(df: pd.DataFrame, required: Iterable[str]) -> None:
     """
     Validate that required columns exist in the DataFrame.
@@ -154,7 +145,8 @@ def load_features_and_target(
     X = df.drop(columns=[target_col, *drop_cols], errors="raise")
 
     if X.shape[1] == 0:
-        raise ValueError("No feature columns remain after dropping target/drop_cols")
+        raise ValueError("No feature columns remain after dropping"
+                         + "target/drop_cols")
 
     return X, y
 

@@ -610,7 +610,8 @@ def max_intersect_fnr_diff(subject_labels_dict, predictions, true_statuses):
                               predictions=predictions,
                               true_statuses=true_statuses)
     """
-    Calculate the maximum difference in false negative rate across all intersectional groups.
+    Calculate the maximum difference in false negative rate across all
+    intersectional groups.
 
     Parameters
     ----------
@@ -955,7 +956,8 @@ def all_intersect_fprs(subject_labels_dict, predictions, true_statuses):
 
 def max_intersect_fpr_diff(subject_labels_dict, predictions, true_statuses):
     """
-    Calculate the maximum difference in false positive rate across all intersectional groups.
+    Calculate the maximum difference in false positive rate across all
+    intersectional groups.
 
     Parameters
     ----------
@@ -992,7 +994,8 @@ def max_intersect_fpr_diff(subject_labels_dict, predictions, true_statuses):
 def max_intersect_fpr_ratio(subject_labels_dict, predictions, true_statuses,
                             natural_log=True):
     """
-    Calculate the ratio of the maximum to minimum false positive rate across all intersectional groups.
+    Calculate the ratio of the maximum to minimum false positive rate across
+    all intersectional groups.
 
     Parameters
     ----------
@@ -1297,7 +1300,8 @@ def all_intersect_fors(subject_labels_dict, predictions, true_statuses):
 
 def max_intersect_for_diff(subject_labels_dict, predictions, true_statuses):
     """
-    Calculate the maximum difference in false omission rate across all intersectional groups.
+    Calculate the maximum difference in false omission rate across all
+    intersectional groups.
 
     Parameters
     ----------
@@ -1334,7 +1338,8 @@ def max_intersect_for_diff(subject_labels_dict, predictions, true_statuses):
 def max_intersect_for_ratio(subject_labels_dict, predictions, true_statuses,
                             natural_log=True):
     """
-    Calculate the ratio of the maximum to minimum false omission rate across all intersectional groups.
+    Calculate the ratio of the maximum to minimum false omission rate across
+    all intersectional groups.
 
     Parameters
     ----------
@@ -1639,7 +1644,8 @@ def all_intersect_fdrs(subject_labels_dict, predictions, true_statuses):
 
 def max_intersect_fdr_diff(subject_labels_dict, predictions, true_statuses):
     """
-    Calculate the maximum difference in false discovery rate across all intersectional groups.
+    Calculate the maximum difference in false discovery rate across all
+    intersectional groups.
 
     Parameters
     ----------

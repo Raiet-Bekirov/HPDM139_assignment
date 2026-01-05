@@ -105,7 +105,8 @@ def make_eval_df(
     """
     n = len(df_test)
     if len(y_pred) != n or len(y_true) != n:
-        raise ValueError("df_test, y_pred, and y_true must have the same length")
+        raise ValueError("df_test, y_pred, and y_true must have the same"
+                         + "length")
 
     subject_labels = make_intersectional_labels(df_test, protected)
 

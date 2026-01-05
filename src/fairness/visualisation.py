@@ -81,7 +81,8 @@ def _require_equal_lengths(*values: Iterable, names: Sequence[str]) -> None:
     """
     lengths = [len(v) for v in values]
     if len(set(lengths)) != 1:
-        pairs = ", ".join(f"{name}={length}" for name, length in zip(names, lengths))
+        pairs = ", ".join(f"{name}={length}" for name, length in
+                          zip(names, lengths))
         raise ValueError(f"Inputs must have the same length. Got {pairs}")
 
 
@@ -229,7 +230,8 @@ def plot_group_metric(
         groups = _unique_in_order(subject_labels)
     groups = list(groups)
 
-    values = [metric_fn(g, subject_labels, predictions, true_statuses) for g in groups]
+    values = [metric_fn(g, subject_labels,
+                        predictions, true_statuses) for g in groups]
     labels = [str(g) for g in groups]
 
     if sort:
@@ -263,7 +265,8 @@ def plot_group_metric_from_eval_df(
     sort: bool = False,
 ) -> plt.Figure:
     """
-    Convenience wrapper for an eval_df produced by `fairness.groups.make_eval_df`.
+    Convenience wrapper for an eval_df produced by
+    `fairness.groups.make_eval_df`.
 
     Parameters
     ----------
@@ -336,7 +339,8 @@ def plot_pairwise_group_metric(
     ----------
     metric_fn : callable
         A function from `fairness.metrics` with signature:
-        (group_a, group_b, subject_labels, predictions, true_statuses) -> float.
+        (group_a, group_b, subject_labels,
+         predictions, true_statuses) -> float.
     subject_labels : Iterable
         Group label for each sample.
     predictions : Iterable
@@ -385,7 +389,8 @@ def plot_pairwise_group_metric(
     values = []
     for a, b in group_pairs:
         labels.append(f"{a} vs {b}")
-        values.append(metric_fn(a, b, subject_labels, predictions, true_statuses))
+        values.append(metric_fn(a, b, subject_labels, predictions,
+                                true_statuses))
 
     if sort:
         order = np.argsort(np.nan_to_num(values, nan=np.inf))
@@ -466,7 +471,8 @@ def plot_intersectional_metric(
 
     result = metric_fn(dict(subject_labels_dict), predictions, true_statuses)
     if not isinstance(result, dict):
-        raise TypeError("metric_fn must return a dict of intersectional scores.")
+        raise TypeError("metric_fn must return a dict of intersectional"
+                        + "scores.")
 
     labels = list(result.keys())
     values = list(result.values())
@@ -537,10 +543,12 @@ def plot_scalar_metrics(
 
 _SINGLE_METRICS = {
     "EOD": lambda y_test, y_pred, group_labels, privileged_label: (
-        single_metrics.calculate_EOD(y_test, y_pred, group_labels, privileged_label)
+        single_metrics.calculate_EOD(y_test, y_pred, group_labels,
+                                     privileged_label)
     ),
     "AOD": lambda y_test, y_pred, group_labels, privileged_label: (
-        single_metrics.calculate_AOD(y_test, y_pred, group_labels, privileged_label)
+        single_metrics.calculate_AOD(y_test, y_pred, group_labels,
+                                     privileged_label)
     ),
     "DI": lambda y_test, y_pred, group_labels, privileged_label: (
         single_metrics.calculate_DI(y_pred, group_labels, privileged_label)
@@ -610,7 +618,8 @@ def plot_single_metrics(
     for name in metrics:
         if name not in _SINGLE_METRICS:
             raise ValueError(
-                f"Unknown metric '{name}'. Supported: {sorted(_SINGLE_METRICS.keys())}"
+                f"Unknown metric '{name}'. "
+                + f"Supported: {sorted(_SINGLE_METRICS.keys())}"
             )
         fn = _SINGLE_METRICS[name]
         values[name] = fn(y_test, y_pred, group_labels, privileged_label)

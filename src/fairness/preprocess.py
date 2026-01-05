@@ -11,19 +11,23 @@ This module includes:
 
 Design notes
 ------------
-- The toolkit is model-agnostic: these functions do not require sklearn pipelines,
+- The toolkit is model-agnostic: these functions do not require sklearn
+  pipelines,
   but they produce outputs compatible with sklearn and similar libraries.
-- Protected attributes may be used for fairness analysis even if they are excluded
-  from model training. Derived protected attributes (e.g. age_group) are excluded from model inputs.
+- Protected attributes may be used for fairness analysis even if they are
+  excluded from model training. Derived protected attributes (e.g. age_group)
+  are excluded from model inputs.
 
 Typical usage
 -------------
 >>> from fairness.data import load_csv
->>> from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
+>>> from fairness.preprocess import add_age_group, preprocess_tabular, \
+                                    make_train_test_split
 >>> df = load_csv("data/heart.csv")
 >>> df = add_age_group(df)
 >>> df_model = preprocess_tabular(df)
->>> split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("age_group",))
+>>> split = make_train_test_split(df_model, target_col="HeartDisease",
+                                  drop_cols=("age_group",))
 """
 
 from __future__ import annotations
@@ -69,8 +73,9 @@ def add_age_group(
     """
     Add a categorical age-group column derived from a continuous age column.
 
-    This is useful for fairness analysis because continuous protected attributes
-    (like age) create too many groups; binning yields interpretable groups.
+    This is useful for fairness analysis because continuous protected
+    attributes (like age) create too many groups; binning yields interpretable
+    groups.
 
     Parameters
     ----------
@@ -103,7 +108,8 @@ def add_age_group(
 
     if out[new_col].isna().any():
         raise ValueError(
-            f"{new_col} contains NaNs after binning; check '{age_col}' values and bins"
+            f"{new_col} contains NaNs after binning; check '{age_col}' values"
+            + "and bins"
         )
     return out
 
@@ -116,7 +122,8 @@ def map_binary_column(
     strict: bool = True,
 ) -> pd.DataFrame:
     """
-    Map values of a binary/categorical column to new values (e.g., 'M'/'F' -> 1/0).
+    Map values of a binary/categorical column to new values
+    (e.g., 'M'/'F' -> 1/0).
 
     Parameters
     ----------
@@ -127,7 +134,8 @@ def map_binary_column(
     mapping:
         Dictionary defining how to map values.
     strict:
-        If True, raise if unmapped values occur. If False, leave unmapped as-is.
+        If True, raise if unmapped values occur. If False, leave unmapped
+        as-is.
 
     Returns
     -------
@@ -146,7 +154,8 @@ def map_binary_column(
     out[col] = out[col].map(mapping)
 
     if strict and out[col].isna().any():
-        raise ValueError(f"Unmapped values found in '{col}' using mapping={mapping}")
+        raise ValueError(f"Unmapped values found in '{col}' using"
+                         + f"mapping={mapping}")
 
     return out
 
@@ -203,8 +212,8 @@ def preprocess_tabular(
     one_hot:
         Whether to one-hot encode categorical columns.
     drop_first:
-        If one_hot=True, drop the first level for each categorical variable to avoid
-        perfect multicollinearity in logistic regression models.
+        If one_hot=True, drop the first level for each categorical variable to
+        avoid perfect multicollinearity in logistic regression models.
 
     Returns
     -------
@@ -246,7 +255,8 @@ def make_train_test_split(
     target_col:
         Name of the target column.
     drop_cols:
-        Additional columns to exclude from X (e.g. derived protected attributes).
+        Additional columns to exclude from X (e.g. derived protected
+        attributes).
     test_size:
         Fraction of rows assigned to the test set.
     random_state:
@@ -282,4 +292,5 @@ def make_train_test_split(
         stratify=strat,
     )
 
-    return SplitData(X_train=X_train, X_test=X_test, y_train=y_train, y_test=y_test)
+    return SplitData(X_train=X_train, X_test=X_test,
+                     y_train=y_train, y_test=y_test)

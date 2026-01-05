@@ -858,6 +858,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../team_portfolio/meeting_7_agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting 7 agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team_portfolio/meeting_7_minutes.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting 7 minutes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../team_portfolio/action_plan.pdf" class="md-nav__link">
         
   
@@ -1119,11 +1175,13 @@
 <p>Users may want to use their own metrics, models, or datasets. As a result, the toolkit is designed to be model-agnostic and dataset-agnostic.</p>
 <h3 id="3-separation-of-concerns">3. Separation of Concerns<a class="headerlink" href="#3-separation-of-concerns" title="Permanent link">&para;</a></h3>
 <p>A core design principle was separation of responsibilities across modules.</p>
-<p>Fairness analysis typically involves:
-- Data loading and preprocessing
-- Model training (external)
-- Fairness evaluation
-- Visualisation</p>
+<p>Fairness analysis typically involves:</p>
+<ul>
+<li>Data loading and preprocessing</li>
+<li>Model training (external)</li>
+<li>Fairness evaluation</li>
+<li>Visualisation</li>
+</ul>
 <p>To keep the system flexible and maintainable:</p>
 <ul>
 <li>Model training is not part of the core fairness API</li>
@@ -1134,25 +1192,19 @@
 <h3 id="4-package-structure">4. Package Structure<a class="headerlink" href="#4-package-structure" title="Permanent link">&para;</a></h3>
 <p>The project is implemented as a Python package using a src/ layout:</p>
 <p>src/
-  fairness/
-    data.py
-    preprocess.py
-    groups.py
-    adapters.py
-    metrics/
-    plots/
-    demo/</p>
+...fairness/
+......data.py
+......preprocess.py
+......groups.py
+......adapters.py
+......metrics.py
+......single_metrics.py
+......visualisations.py</p>
 <p>Key design choices:</p>
 <ul>
-<li>
-<p>using src/ Prevents accidental imports from the repository root.</p>
-</li>
-<li>
-<p>Each module has a single responsibility (e.g. groups.py only handles group construction).</p>
-</li>
-<li>
-<p>Functions accept and return plain Python objects (DataFrame, lists, dicts)</p>
-</li>
+<li>using src/ Prevents accidental imports from the repository root.</li>
+<li>Each module has a single responsibility (e.g. groups.py only handles group construction).</li>
+<li>Functions accept and return plain Python objects (DataFrame, lists, dicts)</li>
 </ul>
 <p>This structure supports reusability, testing and long-term extensibility</p>
 <h3 id="5-data-flow-into-fairness-metrics">5. Data Flow Into Fairness Metrics<a class="headerlink" href="#5-data-flow-into-fairness-metrics" title="Permanent link">&para;</a></h3>

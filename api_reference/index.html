@@ -1571,6 +1571,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../team_portfolio/meeting_7_agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting 7 agenda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team_portfolio/meeting_7_minutes.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting 7 minutes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../team_portfolio/action_plan.pdf" class="md-nav__link">
         
   
@@ -3070,10 +3126,12 @@ used only for fairness analysis such as 'age_group').</p>
 <details class="design-notes" open>
   <summary>Design notes</summary>
   <ul>
-<li>The toolkit is model-agnostic: these functions do not require sklearn pipelines,
+<li>The toolkit is model-agnostic: these functions do not require sklearn
+  pipelines,
   but they produce outputs compatible with sklearn and similar libraries.</li>
-<li>Protected attributes may be used for fairness analysis even if they are excluded
-  from model training. Derived protected attributes (e.g. age_group) are excluded from model inputs.</li>
+<li>Protected attributes may be used for fairness analysis even if they are
+  excluded from model training. Derived protected attributes (e.g. age_group)
+  are excluded from model inputs.</li>
 </ul>
 </details>
 
@@ -3083,11 +3141,12 @@ used only for fairness analysis such as 'age_group').</p>
 <blockquote>
 <blockquote>
 <p>from fairness.data import load_csv
-from fairness.preprocess import add_age_group, preprocess_tabular, make_train_test_split
+from fairness.preprocess import add_age_group, preprocess_tabular,                                     make_train_test_split
 df = load_csv("data/heart.csv")
 df = add_age_group(df)
 df_model = preprocess_tabular(df)
-split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("age_group",))</p>
+split = make_train_test_split(df_model, target_col="HeartDisease",
+                                  drop_cols=("age_group",))</p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -3208,8 +3267,9 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
     <div class="doc doc-contents ">
 
         <p>Add a categorical age-group column derived from a continuous age column.</p>
-<p>This is useful for fairness analysis because continuous protected attributes
-(like age) create too many groups; binning yields interpretable groups.</p>
+<p>This is useful for fairness analysis because continuous protected
+attributes (like age) create too many groups; binning yields interpretable
+groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3511,7 +3571,8 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional columns to exclude from X (e.g. derived protected attributes).</p>
+                <p>Additional columns to exclude from X (e.g. derived protected
+attributes).</p>
               </div>
             </td>
             <td>
@@ -3636,7 +3697,8 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
 
     <div class="doc doc-contents ">
 
-        <p>Map values of a binary/categorical column to new values (e.g., 'M'/'F' -&gt; 1/0).</p>
+        <p>Map values of a binary/categorical column to new values
+(e.g., 'M'/'F' -&gt; 1/0).</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3707,7 +3769,8 @@ split = make_train_test_split(df_model, target_col="HeartDisease", drop_cols=("a
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, raise if unmapped values occur. If False, leave unmapped as-is.</p>
+                <p>If True, raise if unmapped values occur. If False, leave unmapped
+as-is.</p>
               </div>
             </td>
             <td>
@@ -3852,8 +3915,8 @@ and leaves numeric columns unchanged.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If one_hot=True, drop the first level for each categorical variable to avoid
-perfect multicollinearity in logistic regression models.</p>
+                <p>If one_hot=True, drop the first level for each categorical variable to
+avoid perfect multicollinearity in logistic regression models.</p>
               </div>
             </td>
             <td>
@@ -7982,7 +8045,8 @@ or if any accuracy is 0.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the maximum difference in false discovery rate across all intersectional groups.</p>
+        <p>Calculate the maximum difference in false discovery rate across all
+intersectional groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8343,7 +8407,8 @@ observations or if any false negative rate is 0.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the maximum difference in false omission rate across all intersectional groups.</p>
+        <p>Calculate the maximum difference in false omission rate across all
+intersectional groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8452,7 +8517,8 @@ observations.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the ratio of the maximum to minimum false omission rate across all intersectional groups.</p>
+        <p>Calculate the ratio of the maximum to minimum false omission rate across
+all intersectional groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8577,7 +8643,8 @@ observations or if any false omission rate is 0.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the maximum difference in false positive rate across all intersectional groups.</p>
+        <p>Calculate the maximum difference in false positive rate across all
+intersectional groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8686,7 +8753,8 @@ observations.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Calculate the ratio of the maximum to minimum false positive rate across all intersectional groups.</p>
+        <p>Calculate the ratio of the maximum to minimum false positive rate across
+all intersectional groups.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -9627,7 +9695,8 @@ value for that group (e.g., <code>group_acc</code>, <code>group_fnr</code>, <cod
 
     <div class="doc doc-contents ">
 
-        <p>Convenience wrapper for an eval_df produced by <code>fairness.groups.make_eval_df</code>.</p>
+        <p>Convenience wrapper for an eval_df produced by
+<code>fairness.groups.make_eval_df</code>.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -10065,7 +10134,8 @@ scalar (e.g., difference or ratio of accuracies).</p>
             <td>
               <div class="doc-md-description">
                 <p>A function from <code>fairness.metrics</code> with signature:
-(group_a, group_b, subject_labels, predictions, true_statuses) -&gt; float.</p>
+(group_a, group_b, subject_labels,
+ predictions, true_statuses) -&gt; float.</p>
               </div>
             </td>
             <td>

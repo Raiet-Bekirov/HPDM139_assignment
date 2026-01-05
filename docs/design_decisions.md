@@ -50,15 +50,7 @@ This makes it easier to swap models, reuse metrics, and test components independ
 
 The project is implemented as a Python package using a src/ layout:
 
-src/
-...fairness/
-......data.py
-......preprocess.py
-......groups.py
-......adapters.py
-......metrics.py
-......single_metrics.py
-......visualisations.py
+src/ fairness/ data.py, preprocess.py, groups.py, adapters.py, metrics.py, single_metrics.py, visualisations.py
 
 Key design choices:
 

@@ -334,4 +334,4 @@ def calculate_DI(y_pred, group_labels, privileged_label):
 
     DI = P_unpriv / P_priv
 
-    return DI
+    return float(DI)
